@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:kaimovies/main.dart';
-import 'package:kaimovies/view/pages/detail_page.dart';
 import 'package:kaimovies/view/pages/home_page.dart';
+import 'package:kaimovies/view/pages/movie_detail_page.dart';
+import 'package:kaimovies/view/pages/tv_detail_page.dart';
 
 final _router = GoRouter(
   routes: [
@@ -12,10 +13,15 @@ final _router = GoRouter(
       builder: (context, state) => const HomePage(),
       routes: [
         GoRoute(
-          name: 'detail',
-          path: "detail/:id",
-          builder: (context, state) => DetailPage(state.params['id']),
-        )
+          name: 'movieDetail',
+          path: "movie-detail/:id",
+          builder: (context, state) => MovieDetailPage(state.params['id']),
+        ),
+        GoRoute(
+          name: 'tvDetail',
+          path: "tv-detail/:id",
+          builder: (context, state) => TvDetailPage(state.params['id']),
+        ),
       ],
     ),
   ],
