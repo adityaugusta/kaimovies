@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:kaimovies/main.dart';
 import 'package:kaimovies/view/tabs/tab_movies.dart';
 import 'package:kaimovies/view/tabs/tab_televisions.dart';
 
@@ -37,21 +39,29 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        body: PageView(
-          controller: _pageController,
-          physics: const NeverScrollableScrollPhysics(),
-          children: _pages,
-        ),
-        bottomNavigationBar: BottomNavigationBar(
-          items: [
-            BottomNavigationBarItem(icon: Container(), label: 'Movie'),
-            BottomNavigationBarItem(icon: Container(), label: 'TV'),
-            BottomNavigationBarItem(icon: Container(), label: 'Profile'),
-          ],
-          currentIndex: _selectedIndex,
-          onTap: _onItemTapped,
+    return AnnotatedRegion<SystemUiOverlayStyle>(
+      value: const SystemUiOverlayStyle(
+        statusBarColor: backgroundColor,
+        systemNavigationBarColor: backgroundColor,
+        statusBarIconBrightness: Brightness.light,
+        systemNavigationBarIconBrightness: Brightness.light,
+      ),
+      child: SafeArea(
+        child: Scaffold(
+          body: PageView(
+            controller: _pageController,
+            physics: const NeverScrollableScrollPhysics(),
+            children: _pages,
+          ),
+          bottomNavigationBar: BottomNavigationBar(
+            items: [
+              BottomNavigationBarItem(icon: Container(), label: 'Movie'),
+              BottomNavigationBarItem(icon: Container(), label: 'TV'),
+              BottomNavigationBarItem(icon: Container(), label: 'Profile'),
+            ],
+            currentIndex: _selectedIndex,
+            onTap: _onItemTapped,
+          ),
         ),
       ),
     );

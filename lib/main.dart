@@ -5,11 +5,13 @@ import 'package:get_it/get_it.dart';
 import 'package:kaimovies/app.dart';
 import 'package:kaimovies/model/movie.dart';
 import 'package:kaimovies/model/review.dart';
+import 'package:kaimovies/model/tv.dart';
 import 'package:kaimovies/repositories/movie_repository.dart';
 import 'package:kaimovies/repositories/network/converter/json_converter.dart';
 import 'package:kaimovies/repositories/network/movie_service.dart';
 import 'package:kaimovies/repositories/network/response/movie_response.dart';
 import 'package:kaimovies/repositories/network/response/review_response.dart';
+import 'package:kaimovies/repositories/network/response/tv_response.dart';
 import 'package:kaimovies/repositories/network/service_manager.dart';
 import 'package:kaimovies/repositories/network/tv_service.dart';
 import 'package:kaimovies/repositories/tv_repository.dart';
@@ -33,12 +35,6 @@ extension GetItExtension on GetIt {
 
 Future<void> initUi() async {
   WidgetsFlutterBinding.ensureInitialized();
-  SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
-    statusBarColor: backgroundColor,
-    systemNavigationBarColor: backgroundColor,
-    statusBarIconBrightness: Brightness.light,
-    systemNavigationBarIconBrightness: Brightness.light,
-  ));
   await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
 }
 
@@ -51,8 +47,10 @@ Future<void> initServices() async {
   injector.registerSingleton<Map<Type, JsonFactory>>(<Type, JsonFactory>{});
   injector.get<Map<Type, JsonFactory>>().addAll({
     MovieResponse: MovieResponse.fromJsonFactory,
+    TvResponse: TvResponse.fromJsonFactory,
     ReviewResponse: ReviewResponse.fromJsonFactory,
     Movie: Movie.fromJsonFactory,
+    Tv: Tv.fromJsonFactory,
     Review: Review.fromJsonFactory,
   });
   injector.registerLazySingleton<JsonModelConverter>(

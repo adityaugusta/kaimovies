@@ -2,20 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:kaimovies/blocs/movie_detail_cubit.dart';
-import 'package:kaimovies/blocs/movie_detail_state.dart';
+import 'package:kaimovies/blocs/tv_detail_cubit.dart';
+import 'package:kaimovies/blocs/tv_detail_state.dart';
 import 'package:kaimovies/main.dart';
 
-class MovieDetailPage extends StatefulWidget {
-  const MovieDetailPage(this.movieId, {super.key});
+class TvDetailPage extends StatefulWidget {
+  const TvDetailPage(this.tvId, {super.key});
 
-  final String? movieId;
+  final String? tvId;
 
   @override
-  State<MovieDetailPage> createState() => _MovieDetailPageState();
+  State<TvDetailPage> createState() => _TvDetailPageState();
 }
 
-class _MovieDetailPageState extends State<MovieDetailPage> {
+class _TvDetailPageState extends State<TvDetailPage> {
   @override
   Widget build(BuildContext context) {
     final padding = MediaQuery.of(context).padding;
@@ -32,12 +32,12 @@ class _MovieDetailPageState extends State<MovieDetailPage> {
         child: Scaffold(
           body: BlocProvider(
             create: (context) =>
-                MovieDetailCubit.create(context)..fetch(widget.movieId ?? ''),
-            child: BlocBuilder<MovieDetailCubit, MovieDetailState>(
+                TvDetailCubit.create(context)..fetch(widget.tvId ?? ''),
+            child: BlocBuilder<TvDetailCubit, TvDetailState>(
               builder: (context, state) {
-                if (state is SuccessMovieDetailState) {
-                  final posterPath = state.movie.posterPath ?? '';
-                  final backdropPath = state.movie.backdropPath ?? '';
+                if (state is SuccessTvDetailState) {
+                  final posterPath = state.tv.posterPath ?? '';
+                  final backdropPath = state.tv.backdropPath ?? '';
                   final pos = post + backdropPath;
                   return Container(
                     width: double.infinity,
@@ -65,7 +65,8 @@ class _MovieDetailPageState extends State<MovieDetailPage> {
                           ],
                         ),
                         Padding(
-                          padding: const EdgeInsets.only(top: 280, bottom: 15.0),
+                          padding:
+                              const EdgeInsets.only(top: 280, bottom: 15.0),
                           child: Expanded(
                             child: SingleChildScrollView(
                               padding:
@@ -74,7 +75,8 @@ class _MovieDetailPageState extends State<MovieDetailPage> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Row(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     children: [
                                       Container(
                                         height: 105.0,
@@ -107,7 +109,7 @@ class _MovieDetailPageState extends State<MovieDetailPage> {
                                               CrossAxisAlignment.start,
                                           children: [
                                             Text(
-                                              state.movie.title,
+                                              state.tv.name,
                                               style: const TextStyle(
                                                 fontSize: 23.0,
                                                 // fontWeight: FontWeight.bold,
@@ -128,7 +130,7 @@ class _MovieDetailPageState extends State<MovieDetailPage> {
                                   ),
                                   const SizedBox(height: 10.0),
                                   Text(
-                                    state.movie.overview,
+                                    state.tv.overview,
                                     style: const TextStyle(
                                       fontSize: 15.0,
                                     ),
@@ -163,16 +165,19 @@ class _MovieDetailPageState extends State<MovieDetailPage> {
                                             children: [
                                               CircleAvatar(
                                                 radius: 24,
-                                                backgroundColor: backgroundColor,
+                                                backgroundColor:
+                                                    backgroundColor,
                                                 child: Container(
                                                   width: 48,
                                                   height: 48,
                                                   decoration: BoxDecoration(
                                                     borderRadius:
-                                                        BorderRadius.circular(48),
+                                                        BorderRadius.circular(
+                                                            48),
                                                     image: DecorationImage(
-                                                      image: Image.network(avatar)
-                                                          .image,
+                                                      image:
+                                                          Image.network(avatar)
+                                                              .image,
                                                       fit: BoxFit.cover,
                                                     ),
                                                   ),
@@ -193,10 +198,11 @@ class _MovieDetailPageState extends State<MovieDetailPage> {
                                                             FontWeight.bold,
                                                       ),
                                                     ),
-                                                    const SizedBox(height: 10.0),
+                                                    const SizedBox(
+                                                        height: 10.0),
                                                     Text(
-                                                      state
-                                                          .reviews[index].content,
+                                                      state.reviews[index]
+                                                          .content,
                                                       maxLines: 5,
                                                       overflow:
                                                           TextOverflow.ellipsis,

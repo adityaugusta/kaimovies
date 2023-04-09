@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class MoviePosterCard extends StatelessWidget {
-  const MoviePosterCard({
+class PosterCard extends StatelessWidget {
+  const PosterCard({
     Key? key,
     required this.title,
     required this.imageUrl,

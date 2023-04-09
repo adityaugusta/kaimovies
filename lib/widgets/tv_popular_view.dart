@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:kaimovies/blocs/movie_popular_cubit.dart';
+import 'package:kaimovies/blocs/tv_popular_cubit.dart';
 import 'package:kaimovies/main.dart';
 import 'package:kaimovies/widgets/card_poster.dart';
 
-class PopularMoviesView extends StatelessWidget {
-  const PopularMoviesView({Key? key}) : super(key: key);
+class PopularTvsView extends StatelessWidget {
+  const PopularTvsView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -21,24 +21,24 @@ class PopularMoviesView extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 15.0),
-        BlocBuilder<MoviePopularCubit, MoviePopularState>(
+        BlocBuilder<TvPopularCubit, TvPopularState>(
           builder: (_, state) {
-            if (state is SuccessMoviePopularState) {
+            if (state is SuccessTvPopularState) {
               return SizedBox(
                 height: 200.0,
                 width: double.infinity,
                 child: ListView.separated(
-                  key: const PageStorageKey<String>('movie_popular'),
-                  itemCount: state.movies.length,
+                  key: const PageStorageKey<String>('tv_popular'),
+                  itemCount: state.tvs.length,
                   scrollDirection: Axis.horizontal,
                   itemBuilder: (_, int index) => PosterCard(
-                    title: state.movies[index].title,
-                    imageUrl: post + (state.movies[index].posterPath ?? ''),
-                    onTap: () => context.goNamed('movieDetail',
-                        params: {'id': state.movies[index].id.toString()}),
+                    title: state.tvs[index].name,
+                    imageUrl: post + (state.tvs[index].posterPath ?? ''),
+                    onTap: () => context.goNamed('tvDetail',
+                        params: {'id': state.tvs[index].id.toString()}),
                   ),
                   separatorBuilder: (BuildContext context, int index) =>
-                      const SizedBox(width: 10.0),
+                  const SizedBox(width: 10.0),
                 ),
               );
             }

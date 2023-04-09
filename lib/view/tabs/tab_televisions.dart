@@ -32,9 +32,9 @@ class _TelevisionsTabState extends State<TelevisionsTab>
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: const [
-              TvOnTheAirView(),
+              OnTheAirTvsView(),
               SizedBox(height: 40.0),
-              TvPopularView(),
+              PopularTvsView(),
             ],
           ),
         ),

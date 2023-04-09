@@ -31,7 +31,7 @@ class UpcomingMoviesView extends StatelessWidget {
                   key: const PageStorageKey<String>('movie_upcoming'),
                   itemCount: state.movies.length,
                   scrollDirection: Axis.horizontal,
-                  itemBuilder: (_, int index) => MoviePosterCard(
+                  itemBuilder: (_, int index) => PosterCard(
                     title: state.movies[index].title,
                     imageUrl: post + (state.movies[index].posterPath ?? ''),
                     onTap: () => context.goNamed('movieDetail',
