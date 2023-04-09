@@ -14,7 +14,7 @@ class NowPlayingView extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Center(
+        const Center(
           child: Text(
             'Now Playing',
             style: TextStyle(
@@ -23,7 +23,7 @@ class NowPlayingView extends StatelessWidget {
             ),
           ),
         ),
-        SizedBox(height: 10.0),
+        const SizedBox(height: 10.0),
         BlocBuilder<MovieNowPlayingCubit, MovieNowPlayingState>(
           builder: (_, state) {
             if (state is SuccessMovieNowPlayingState) {
@@ -34,32 +34,32 @@ class NowPlayingView extends StatelessWidget {
                 child: CardSwiper(
                   cardsCount: movies.length,
                   numberOfCardsDisplayed: 3,
-                  padding: EdgeInsets.symmetric(horizontal: 50.0, vertical: 15.0),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 50.0,
+                    vertical: 15.0,
+                  ),
                   cardBuilder: (context, index) {
-                    final poster = movies[index].posterPath ?? '';
-                    final pos = post + poster;
+                    final posterUrl = post + (movies[index].posterPath ?? '');
                     return GestureDetector(
-                      onTap: () => context.goNamed('detail', params: {'id': movies[index].id.toString()}),
-                      child: Hero(
-                        tag: movies[index].id,
-                        child: Container(
-                          clipBehavior: Clip.hardEdge,
-                          decoration: BoxDecoration(
-                            borderRadius: const BorderRadius.all(Radius.circular(20)),
-                            color: Colors.white10,
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.black12,
-                                spreadRadius: 10,
-                                blurRadius: 10,
-                                offset: const Offset(0, 3),
-                              )
-                            ],
-                            image: DecorationImage(
-                                image: Image.network(
-                                  pos,
-                                ).image,
-                                fit: BoxFit.cover),
+                      onTap: () => context.goNamed('movieDetail',
+                          params: {'id': movies[index].id.toString()}),
+                      child: Container(
+                        clipBehavior: Clip.hardEdge,
+                        decoration: BoxDecoration(
+                          borderRadius:
+                              const BorderRadius.all(Radius.circular(20)),
+                          color: Colors.white10,
+                          boxShadow: const [
+                            BoxShadow(
+                              color: Colors.black12,
+                              spreadRadius: 10,
+                              blurRadius: 10,
+                              offset: Offset(0, 3),
+                            )
+                          ],
+                          image: DecorationImage(
+                            image: Image.network(posterUrl).image,
+                            fit: BoxFit.cover,
                           ),
                         ),
                       ),
