@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kaimovies/blocs/tv_detail_state.dart';
-import 'package:kaimovies/main.dart';
+import 'package:kaimovies/injector.dart';
 import 'package:kaimovies/repositories/tv_repository.dart';
 
 export 'movie_popular_state.dart';

@@ -35,9 +35,8 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
-#  assets:
-#    - packages/jojotask/assets/lottie/home_loading.json
-#    - packages/jojotask/images/app.png
+  assets:
+    - assets/app_logo.png
 
 flutter_icons:
   android: "launcher_icon"

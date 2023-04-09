@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:kaimovies/blocs/movie_upcoming_state.dart';
-import 'package:kaimovies/main.dart';
+import 'package:kaimovies/injector.dart';
 import 'package:kaimovies/repositories/movie_repository.dart';
 import 'movie_upcoming_state.dart';
 

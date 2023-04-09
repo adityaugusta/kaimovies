@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_card_swiper/flutter_card_swiper.dart';
 import 'package:go_router/go_router.dart';
 import 'package:kaimovies/blocs/movie_now_playing_cubit.dart';
-import 'package:kaimovies/main.dart';
+import 'package:kaimovies/repositories/network/utilities/api_utils.dart';
 
 class NowPlayingMoviesView extends StatelessWidget {
   const NowPlayingMoviesView({super.key});
@@ -39,7 +39,8 @@ class NowPlayingMoviesView extends StatelessWidget {
                     vertical: 15.0,
                   ),
                   cardBuilder: (context, index) {
-                    final posterUrl = post + (movies[index].posterPath ?? '');
+                    final posterUrl =
+                        getImageUrl(movies[index].posterPath ?? '');
                     return GestureDetector(
                       onTap: () => context.goNamed('movieDetail',
                           params: {'id': movies[index].id.toString()}),

@@ -2,20 +2,22 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:kaimovies/blocs/tv_popular_cubit.dart';
-import 'package:kaimovies/main.dart';
+import 'package:kaimovies/repositories/network/utilities/api_utils.dart';
 import 'package:kaimovies/widgets/card_poster.dart';
 
 class PopularTvsView extends StatelessWidget {
-  const PopularTvsView({Key? key}) : super(key: key);
+  const PopularTvsView({super.key, this.title});
+
+  final String? title;
 
   @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text(
-          'Popular',
-          style: TextStyle(
+        Text(
+          title ?? 'Popular',
+          style: const TextStyle(
             fontSize: 18.0,
             fontWeight: FontWeight.bold,
           ),
@@ -33,12 +35,12 @@ class PopularTvsView extends StatelessWidget {
                   scrollDirection: Axis.horizontal,
                   itemBuilder: (_, int index) => PosterCard(
                     title: state.tvs[index].name,
-                    imageUrl: post + (state.tvs[index].posterPath ?? ''),
+                    imageUrl: getImageUrl(state.tvs[index].posterPath ?? ''),
                     onTap: () => context.goNamed('tvDetail',
                         params: {'id': state.tvs[index].id.toString()}),
                   ),
                   separatorBuilder: (BuildContext context, int index) =>
-                  const SizedBox(width: 10.0),
+                      const SizedBox(width: 10.0),
                 ),
               );
             }

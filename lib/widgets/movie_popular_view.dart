@@ -2,20 +2,22 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:kaimovies/blocs/movie_popular_cubit.dart';
-import 'package:kaimovies/main.dart';
+import 'package:kaimovies/repositories/network/utilities/api_utils.dart';
 import 'package:kaimovies/widgets/card_poster.dart';
 
 class PopularMoviesView extends StatelessWidget {
-  const PopularMoviesView({Key? key}) : super(key: key);
+  const PopularMoviesView({super.key, this.title});
+
+  final String? title;
 
   @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text(
-          'Popular',
-          style: TextStyle(
+        Text(
+          title ?? 'Popular',
+          style: const TextStyle(
             fontSize: 18.0,
             fontWeight: FontWeight.bold,
           ),
@@ -33,7 +35,8 @@ class PopularMoviesView extends StatelessWidget {
                   scrollDirection: Axis.horizontal,
                   itemBuilder: (_, int index) => PosterCard(
                     title: state.movies[index].title,
-                    imageUrl: post + (state.movies[index].posterPath ?? ''),
+                    imageUrl:
+                        getImageUrl(state.movies[index].posterPath ?? ''),
                     onTap: () => context.goNamed('movieDetail',
                         params: {'id': state.movies[index].id.toString()}),
                   ),

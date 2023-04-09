@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:kaimovies/main.dart';
+import 'package:kaimovies/repositories/network/utilities/ui_utils.dart';
 import 'package:kaimovies/view/pages/home_page.dart';
 import 'package:kaimovies/view/pages/movie_detail_page.dart';
 import 'package:kaimovies/view/pages/tv_detail_page.dart';
@@ -14,12 +14,12 @@ final _router = GoRouter(
       routes: [
         GoRoute(
           name: 'movieDetail',
-          path: "movie-detail/:id",
+          path: 'movie-detail/:id',
           builder: (context, state) => MovieDetailPage(state.params['id']),
         ),
         GoRoute(
           name: 'tvDetail',
-          path: "tv-detail/:id",
+          path: 'tv-detail/:id',
           builder: (context, state) => TvDetailPage(state.params['id']),
         ),
       ],
@@ -41,12 +41,16 @@ class App extends StatelessWidget {
           primary: Colors.teal,
           brightness: Brightness.dark,
         ),
+        bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+          backgroundColor: backgroundLightColor,
+          selectedItemColor: Colors.teal,
+        ),
         canvasColor: backgroundColor,
         scaffoldBackgroundColor: backgroundColor,
         appBarTheme: const AppBarTheme(backgroundColor: backgroundColor),
       ),
-      debugShowCheckedModeBanner: false,
       themeMode: ThemeMode.dark,
+      debugShowCheckedModeBanner: false,
     );
   }
 }

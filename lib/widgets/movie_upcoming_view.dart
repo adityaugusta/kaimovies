@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:kaimovies/blocs/movie_upcoming_cubit.dart';
-import 'package:kaimovies/main.dart';
+import 'package:kaimovies/repositories/network/utilities/api_utils.dart';
 import 'package:kaimovies/widgets/card_poster.dart';
 
 class UpcomingMoviesView extends StatelessWidget {
@@ -33,7 +33,8 @@ class UpcomingMoviesView extends StatelessWidget {
                   scrollDirection: Axis.horizontal,
                   itemBuilder: (_, int index) => PosterCard(
                     title: state.movies[index].title,
-                    imageUrl: post + (state.movies[index].posterPath ?? ''),
+                    imageUrl:
+                        getImageUrl(state.movies[index].posterPath ?? ''),
                     onTap: () => context.goNamed('movieDetail',
                         params: {'id': state.movies[index].id.toString()}),
                   ),

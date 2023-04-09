@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:kaimovies/main.dart';
+import 'package:kaimovies/injector.dart';
 import 'package:kaimovies/repositories/tv_repository.dart';
 import 'tv_popular_state.dart';
 

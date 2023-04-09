@@ -3,8 +3,8 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:kaimovies/blocs/movie_detail_cubit.dart';
-import 'package:kaimovies/blocs/movie_detail_state.dart';
-import 'package:kaimovies/main.dart';
+import 'package:kaimovies/repositories/network/utilities/api_utils.dart';
+import 'package:kaimovies/repositories/network/utilities/ui_utils.dart';
 
 class MovieDetailPage extends StatefulWidget {
   const MovieDetailPage(this.movieId, {super.key});
@@ -36,9 +36,9 @@ class _MovieDetailPageState extends State<MovieDetailPage> {
             child: BlocBuilder<MovieDetailCubit, MovieDetailState>(
               builder: (context, state) {
                 if (state is SuccessMovieDetailState) {
-                  final posterPath = state.movie.posterPath ?? '';
-                  final backdropPath = state.movie.backdropPath ?? '';
-                  final pos = post + backdropPath;
+                  final posterUrl = getImageUrl(state.movie.posterPath ?? '');
+                  final backdropUrl =
+                      getImageUrl(state.movie.backdropPath ?? '');
                   return Container(
                     width: double.infinity,
                     height: double.infinity,
@@ -49,7 +49,8 @@ class _MovieDetailPageState extends State<MovieDetailPage> {
                           children: [
                             SizedBox(
                               height: 380,
-                              child: Image.network(pos, fit: BoxFit.cover),
+                              child:
+                                  Image.network(backdropUrl, fit: BoxFit.cover),
                             ),
                             Container(
                               decoration: const BoxDecoration(
@@ -65,7 +66,8 @@ class _MovieDetailPageState extends State<MovieDetailPage> {
                           ],
                         ),
                         Padding(
-                          padding: const EdgeInsets.only(top: 280, bottom: 15.0),
+                          padding:
+                              const EdgeInsets.only(top: 280, bottom: 15.0),
                           child: Expanded(
                             child: SingleChildScrollView(
                               padding:
@@ -74,7 +76,8 @@ class _MovieDetailPageState extends State<MovieDetailPage> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Row(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     children: [
                                       Container(
                                         height: 105.0,
@@ -94,7 +97,7 @@ class _MovieDetailPageState extends State<MovieDetailPage> {
                                           ],
                                           image: DecorationImage(
                                             image: Image.network(
-                                              post + posterPath,
+                                              posterUrl,
                                             ).image,
                                             fit: BoxFit.cover,
                                           ),
@@ -149,10 +152,11 @@ class _MovieDetailPageState extends State<MovieDetailPage> {
                                       itemCount: state.reviews.length,
                                       scrollDirection: Axis.horizontal,
                                       itemBuilder: (_, int index) {
-                                        final avatarPath = state.reviews[index]
-                                                .authorDetails.avatarPath ??
-                                            '';
-                                        final avatar = post + avatarPath;
+                                        final avatarUrl = getImageUrl(state
+                                                .reviews[index]
+                                                .authorDetails
+                                                .avatarPath ??
+                                            '');
                                         return Container(
                                           color: Colors.black26,
                                           width: size.width * 3 / 4,
@@ -163,15 +167,18 @@ class _MovieDetailPageState extends State<MovieDetailPage> {
                                             children: [
                                               CircleAvatar(
                                                 radius: 24,
-                                                backgroundColor: backgroundColor,
+                                                backgroundColor:
+                                                    backgroundColor,
                                                 child: Container(
                                                   width: 48,
                                                   height: 48,
                                                   decoration: BoxDecoration(
                                                     borderRadius:
-                                                        BorderRadius.circular(48),
+                                                        BorderRadius.circular(
+                                                            48),
                                                     image: DecorationImage(
-                                                      image: Image.network(avatar)
+                                                      image: Image.network(
+                                                              avatarUrl)
                                                           .image,
                                                       fit: BoxFit.cover,
                                                     ),
@@ -193,10 +200,11 @@ class _MovieDetailPageState extends State<MovieDetailPage> {
                                                             FontWeight.bold,
                                                       ),
                                                     ),
-                                                    const SizedBox(height: 10.0),
+                                                    const SizedBox(
+                                                        height: 10.0),
                                                     Text(
-                                                      state
-                                                          .reviews[index].content,
+                                                      state.reviews[index]
+                                                          .content,
                                                       maxLines: 5,
                                                       overflow:
                                                           TextOverflow.ellipsis,

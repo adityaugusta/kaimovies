@@ -24,7 +24,7 @@ class JsonModelConverter extends JsonConverter {
     if (entity is Iterable) return _decodeList<T>(entity as List);
     if (entity is Map<String, dynamic>) {
       return _decodeMap<T>(entity);
-    };
+    }
     return entity;
   }
 

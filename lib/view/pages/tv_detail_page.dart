@@ -4,7 +4,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:kaimovies/blocs/tv_detail_cubit.dart';
 import 'package:kaimovies/blocs/tv_detail_state.dart';
-import 'package:kaimovies/main.dart';
+import 'package:kaimovies/repositories/network/utilities/api_utils.dart';
+import 'package:kaimovies/repositories/network/utilities/ui_utils.dart';
 
 class TvDetailPage extends StatefulWidget {
   const TvDetailPage(this.tvId, {super.key});
@@ -36,9 +37,8 @@ class _TvDetailPageState extends State<TvDetailPage> {
             child: BlocBuilder<TvDetailCubit, TvDetailState>(
               builder: (context, state) {
                 if (state is SuccessTvDetailState) {
-                  final posterPath = state.tv.posterPath ?? '';
-                  final backdropPath = state.tv.backdropPath ?? '';
-                  final pos = post + backdropPath;
+                  final posterUrl = getImageUrl(state.tv.posterPath ?? '');
+                  final backdropUrl = getImageUrl(state.tv.backdropPath ?? '');
                   return Container(
                     width: double.infinity,
                     height: double.infinity,
@@ -49,7 +49,8 @@ class _TvDetailPageState extends State<TvDetailPage> {
                           children: [
                             SizedBox(
                               height: 380,
-                              child: Image.network(pos, fit: BoxFit.cover),
+                              child:
+                                  Image.network(backdropUrl, fit: BoxFit.cover),
                             ),
                             Container(
                               decoration: const BoxDecoration(
@@ -96,7 +97,7 @@ class _TvDetailPageState extends State<TvDetailPage> {
                                           ],
                                           image: DecorationImage(
                                             image: Image.network(
-                                              post + posterPath,
+                                              posterUrl,
                                             ).image,
                                             fit: BoxFit.cover,
                                           ),
@@ -151,10 +152,11 @@ class _TvDetailPageState extends State<TvDetailPage> {
                                       itemCount: state.reviews.length,
                                       scrollDirection: Axis.horizontal,
                                       itemBuilder: (_, int index) {
-                                        final avatarPath = state.reviews[index]
-                                                .authorDetails.avatarPath ??
-                                            '';
-                                        final avatar = post + avatarPath;
+                                        final avatarUrl = getImageUrl(state
+                                                .reviews[index]
+                                                .authorDetails
+                                                .avatarPath ??
+                                            '');
                                         return Container(
                                           color: Colors.black26,
                                           width: size.width * 3 / 4,
@@ -175,9 +177,9 @@ class _TvDetailPageState extends State<TvDetailPage> {
                                                         BorderRadius.circular(
                                                             48),
                                                     image: DecorationImage(
-                                                      image:
-                                                          Image.network(avatar)
-                                                              .image,
+                                                      image: Image.network(
+                                                              avatarUrl)
+                                                          .image,
                                                       fit: BoxFit.cover,
                                                     ),
                                                   ),

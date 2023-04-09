@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:kaimovies/blocs/movie_detail_state.dart';
-import 'package:kaimovies/main.dart';
+import 'package:kaimovies/injector.dart';
 import 'package:kaimovies/repositories/movie_repository.dart';
-import 'movie_popular_state.dart';
+import 'movie_detail_state.dart';
 
-export 'movie_popular_state.dart';
+export 'movie_detail_state.dart';
 
 class MovieDetailCubit extends Cubit<MovieDetailState> {
   MovieDetailCubit(this._movieRepository) : super(LoadingMovieDetailState());
