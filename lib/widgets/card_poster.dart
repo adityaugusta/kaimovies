@@ -1,22 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
-import 'package:kaimovies/main.dart';
-import 'package:kaimovies/model/movie.dart';
 
 class MoviePosterCard extends StatelessWidget {
-  const MoviePosterCard(
-      {Key? key, required this.movie, required this.title, required this.index})
-      : super(key: key);
+  const MoviePosterCard({
+    Key? key,
+    required this.title,
+    required this.imageUrl,
+    this.onTap,
+  }) : super(key: key);
 
-  final Movie movie;
   final String title;
-  final int index;
+  final String imageUrl;
+  final VoidCallback? onTap;
 
   @override
-  Widget build(BuildContext context) {
-    final poster = movie.posterPath ?? '';
-    final pos = post + poster;
-    return SizedBox(
+  Widget build(BuildContext context) => SizedBox(
       width: 100,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -24,25 +21,22 @@ class MoviePosterCard extends StatelessWidget {
           SizedBox(
             height: 150,
             child: GestureDetector(
-              onTap: () => context
-                  .goNamed('detail', params: {'id': movie.id.toString()}),
+              onTap: onTap,
               child: Container(
                 clipBehavior: Clip.hardEdge,
                 decoration: BoxDecoration(
                   borderRadius: const BorderRadius.all(Radius.circular(10)),
                   color: Colors.white10,
-                  boxShadow: [
+                  boxShadow: const [
                     BoxShadow(
                       color: Colors.black12,
                       spreadRadius: 10,
                       blurRadius: 10,
-                      offset: const Offset(0, 3),
+                      offset: Offset(0, 3),
                     )
                   ],
                   image: DecorationImage(
-                    image: Image.network(
-                      pos,
-                    ).image,
+                    image: Image.network(imageUrl).image,
                     fit: BoxFit.cover,
                   ),
                 ),
@@ -50,9 +44,8 @@ class MoviePosterCard extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 5),
-          Text(movie.title, overflow: TextOverflow.ellipsis, maxLines: 2),
+          Text(title, overflow: TextOverflow.ellipsis, maxLines: 2),
         ],
       ),
     );
-  }
 }
