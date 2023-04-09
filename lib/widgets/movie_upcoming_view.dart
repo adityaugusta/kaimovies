@@ -5,8 +5,8 @@ import 'package:kaimovies/blocs/movie_upcoming_cubit.dart';
 import 'package:kaimovies/main.dart';
 import 'package:kaimovies/widgets/card_poster.dart';
 
-class UpcomingView extends StatelessWidget {
-  const UpcomingView({Key? key}) : super(key: key);
+class UpcomingMoviesView extends StatelessWidget {
+  const UpcomingMoviesView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

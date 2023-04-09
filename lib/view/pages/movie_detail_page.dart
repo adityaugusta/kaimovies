@@ -6,16 +6,16 @@ import 'package:kaimovies/blocs/movie_detail_cubit.dart';
 import 'package:kaimovies/blocs/movie_detail_state.dart';
 import 'package:kaimovies/main.dart';
 
-class DetailPage extends StatefulWidget {
-  const DetailPage(this.movieId, {super.key});
+class MovieDetailPage extends StatefulWidget {
+  const MovieDetailPage(this.movieId, {super.key});
 
   final String? movieId;
 
   @override
-  State<DetailPage> createState() => _DetailPageState();
+  State<MovieDetailPage> createState() => _MovieDetailPageState();
 }
 
-class _DetailPageState extends State<DetailPage> {
+class _MovieDetailPageState extends State<MovieDetailPage> {
   @override
   void initState() {
     SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
@@ -72,7 +72,8 @@ class _DetailPageState extends State<DetailPage> {
                         padding: const EdgeInsets.only(top: 280, bottom: 15.0),
                         child: Expanded(
                           child: SingleChildScrollView(
-                            padding: EdgeInsets.symmetric(horizontal: 15.0),
+                            padding:
+                                const EdgeInsets.symmetric(horizontal: 15.0),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
@@ -84,29 +85,30 @@ class _DetailPageState extends State<DetailPage> {
                                       width: 75.0,
                                       clipBehavior: Clip.hardEdge,
                                       decoration: BoxDecoration(
-                                        borderRadius: const BorderRadius.all(Radius.circular(10)),
+                                        borderRadius: const BorderRadius.all(
+                                            Radius.circular(10)),
                                         color: Colors.white10,
-                                        boxShadow: [
+                                        boxShadow: const [
                                           BoxShadow(
                                             color: Colors.black12,
                                             spreadRadius: 10,
                                             blurRadius: 10,
-                                            offset: const Offset(0, 3),
+                                            offset: Offset(0, 3),
                                           )
                                         ],
                                         image: DecorationImage(
                                           image: Image.network(
                                             post + posterPath,
-                                            width: 75.0,
                                           ).image,
                                           fit: BoxFit.cover,
                                         ),
                                       ),
                                     ),
-                                    SizedBox(width: 15.0,),
+                                    const SizedBox(width: 15.0),
                                     Expanded(
                                       child: Column(
-                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
                                         children: [
                                           Text(
                                             state.movie.title,
@@ -120,92 +122,102 @@ class _DetailPageState extends State<DetailPage> {
                                     ),
                                   ],
                                 ),
-                                SizedBox(height: 25.0),
-                                Text(
+                                const SizedBox(height: 25.0),
+                                const Text(
                                   'Overview',
-                                  style: const TextStyle(
+                                  style: TextStyle(
                                     fontSize: 19.0,
                                     fontWeight: FontWeight.bold,
                                   ),
                                 ),
-                                SizedBox(height: 10.0),
+                                const SizedBox(height: 10.0),
                                 Text(
                                   state.movie.overview,
                                   style: const TextStyle(
                                     fontSize: 15.0,
                                   ),
                                 ),
-                                SizedBox(height: 20.0),
-                                Text(
+                                const SizedBox(height: 20.0),
+                                const Text(
                                   'Reviews',
-                                  style: const TextStyle(
+                                  style: TextStyle(
                                     fontSize: 19.0,
                                     fontWeight: FontWeight.bold,
                                   ),
                                 ),
-                                SizedBox(height: 10.0),
+                                const SizedBox(height: 10.0),
                                 SizedBox(
                                   height: 140,
                                   width: double.infinity,
                                   child: ListView.separated(
-                                    // controller: scrollController,
                                     itemCount: state.reviews.length,
                                     scrollDirection: Axis.horizontal,
                                     itemBuilder: (_, int index) {
-                                      final avatarPath = state.reviews[index].authorDetails.avatarPath ?? '';
+                                      final avatarPath = state.reviews[index]
+                                              .authorDetails.avatarPath ??
+                                          '';
                                       final avatar = post + avatarPath;
                                       return Container(
-                                      color: Colors.black26,
-                                      width: size.width * 3/4,
-                                      padding: EdgeInsets.all(15.0),
-                                      child: Row(
-                                        crossAxisAlignment: CrossAxisAlignment.start,
-                                        children: [
-                                          CircleAvatar(
-                                            radius: 24,
-                                            backgroundColor: backgroundColor,
-                                            child: Container(
-                                              width: 48,
-                                              height: 48,
-                                              decoration: BoxDecoration(
-                                                borderRadius: BorderRadius.circular(48),
-                                                image: DecorationImage(
-                                                  image: Image.network(avatar).image,
-                                                  fit: BoxFit.cover,
+                                        color: Colors.black26,
+                                        width: size.width * 3 / 4,
+                                        padding: const EdgeInsets.all(15.0),
+                                        child: Row(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            CircleAvatar(
+                                              radius: 24,
+                                              backgroundColor: backgroundColor,
+                                              child: Container(
+                                                width: 48,
+                                                height: 48,
+                                                decoration: BoxDecoration(
+                                                  borderRadius:
+                                                      BorderRadius.circular(48),
+                                                  image: DecorationImage(
+                                                    image: Image.network(avatar)
+                                                        .image,
+                                                    fit: BoxFit.cover,
+                                                  ),
                                                 ),
                                               ),
                                             ),
-                                          ),
-                                          SizedBox(width: 15.0,),
-                                          Expanded(
-                                            child: Column(
-                                              crossAxisAlignment: CrossAxisAlignment.start,
-                                              children: [
-                                                Text(
-                                                  state.reviews[index].authorDetails.name,
-                                                  style: const TextStyle(
-                                                    fontSize: 15.0,
-                                                    fontWeight: FontWeight.bold,
+                                            const SizedBox(width: 15.0),
+                                            Expanded(
+                                              child: Column(
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
+                                                children: [
+                                                  Text(
+                                                    state.reviews[index]
+                                                        .authorDetails.name,
+                                                    style: const TextStyle(
+                                                      fontSize: 15.0,
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                    ),
                                                   ),
-                                                ),
-                                                SizedBox(height: 10.0,),
-                                                Text(
-                                                  state.reviews[index].content,
-                                                  maxLines: 5,
-                                                  overflow: TextOverflow.ellipsis,
-                                                  style: const TextStyle(
-                                                    fontSize: 12.0,
+                                                  const SizedBox(height: 10.0),
+                                                  Text(
+                                                    state
+                                                        .reviews[index].content,
+                                                    maxLines: 5,
+                                                    overflow:
+                                                        TextOverflow.ellipsis,
+                                                    style: const TextStyle(
+                                                      fontSize: 12.0,
+                                                    ),
                                                   ),
-                                                ),
-                                              ],
-                                            ),
-                                          )
-                                        ],
-                                      ),
-                                    );
+                                                ],
+                                              ),
+                                            )
+                                          ],
+                                        ),
+                                      );
                                     },
-                                    separatorBuilder: (BuildContext context, int index) =>
-                                        SizedBox(width: 15.0),
+                                    separatorBuilder:
+                                        (BuildContext context, int index) =>
+                                            const SizedBox(width: 15.0),
                                   ),
                                 )
                               ],
@@ -219,12 +231,14 @@ class _DetailPageState extends State<DetailPage> {
                         child: GestureDetector(
                           onTap: () => context.pop(),
                           child: Container(
-                            padding: EdgeInsets.all(7.5),
-                            decoration: BoxDecoration(
-                              borderRadius: const BorderRadius.all(Radius.circular(50.0)),
+                            padding: const EdgeInsets.all(7.5),
+                            decoration: const BoxDecoration(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(50.0)),
                               color: Colors.black45,
                             ),
-                            child: Icon(Icons.arrow_back_ios_rounded, color: Colors.white, size: 20.0),
+                            child: const Icon(Icons.arrow_back_ios_rounded,
+                                color: Colors.white, size: 20.0),
                           ),
                         ),
                       ),

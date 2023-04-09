@@ -5,8 +5,8 @@ import 'package:kaimovies/blocs/movie_popular_cubit.dart';
 import 'package:kaimovies/main.dart';
 import 'package:kaimovies/widgets/card_poster.dart';
 
-class PopularView extends StatelessWidget {
-  const PopularView({Key? key}) : super(key: key);
+class PopularMoviesView extends StatelessWidget {
+  const PopularMoviesView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

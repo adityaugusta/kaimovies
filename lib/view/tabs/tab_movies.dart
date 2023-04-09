@@ -3,9 +3,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kaimovies/blocs/movie_now_playing_cubit.dart';
 import 'package:kaimovies/blocs/movie_popular_cubit.dart';
 import 'package:kaimovies/blocs/movie_upcoming_cubit.dart';
-import 'package:kaimovies/widgets/now_playing_view.dart';
-import 'package:kaimovies/widgets/popular_view.dart';
-import 'package:kaimovies/widgets/upcoming_view.dart';
+import 'package:kaimovies/widgets/movie_now_playing_view.dart';
+import 'package:kaimovies/widgets/movie_popular_view.dart';
+import 'package:kaimovies/widgets/movie_upcoming_view.dart';
 
 class MoviesTab extends StatefulWidget {
   const MoviesTab({super.key});
@@ -36,11 +36,11 @@ class _MoviesTabState extends State<MoviesTab>
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: const [
-              NowPlayingView(),
+              NowPlayingMoviesView(),
               SizedBox(height: 40.0),
-              PopularView(),
+              PopularMoviesView(),
               SizedBox(height: 15.0),
-              UpcomingView(),
+              UpcomingMoviesView(),
             ],
           ),
         ),

@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:kaimovies/blocs/movie_now_playing_cubit.dart';
-import 'package:kaimovies/blocs/movie_popular_cubit.dart';
-import 'package:kaimovies/blocs/movie_upcoming_cubit.dart';
-import 'package:kaimovies/widgets/now_playing_view.dart';
-import 'package:kaimovies/widgets/popular_view.dart';
-import 'package:kaimovies/widgets/upcoming_view.dart';
+import 'package:kaimovies/blocs/tv_ota_cubit.dart';
+import 'package:kaimovies/blocs/tv_popular_cubit.dart';
+import 'package:kaimovies/widgets/tv_ota_view.dart';
+import 'package:kaimovies/widgets/tv_popular_view.dart';
 
 class TelevisionsTab extends StatefulWidget {
   const TelevisionsTab({super.key});
@@ -22,11 +20,9 @@ class _TelevisionsTabState extends State<TelevisionsTab>
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-            create: (context) => MovieNowPlayingCubit.create(context)..fetch()),
+            create: (context) => TvOnTheAirCubit.create(context)..fetch()),
         BlocProvider(
-            create: (context) => MoviePopularCubit.create(context)..fetch()),
-        BlocProvider(
-            create: (context) => MovieUpcomingCubit.create(context)..fetch()),
+            create: (context) => TvPopularCubit.create(context)..fetch()),
       ],
       child: SizedBox(
         width: double.infinity,
@@ -36,11 +32,9 @@ class _TelevisionsTabState extends State<TelevisionsTab>
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: const [
-              NowPlayingView(),
+              TvOnTheAirView(),
               SizedBox(height: 40.0),
-              PopularView(),
-              SizedBox(height: 15.0),
-              UpcomingView(),
+              TvPopularView(),
             ],
           ),
         ),

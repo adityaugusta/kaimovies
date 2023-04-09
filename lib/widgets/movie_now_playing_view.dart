@@ -5,8 +5,8 @@ import 'package:go_router/go_router.dart';
 import 'package:kaimovies/blocs/movie_now_playing_cubit.dart';
 import 'package:kaimovies/main.dart';
 
-class NowPlayingView extends StatelessWidget {
-  const NowPlayingView({super.key});
+class NowPlayingMoviesView extends StatelessWidget {
+  const NowPlayingMoviesView({super.key});
 
   @override
   Widget build(BuildContext context) {
