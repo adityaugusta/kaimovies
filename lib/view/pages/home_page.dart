@@ -6,7 +6,7 @@ import 'package:kaimovies/blocs/movie_popular_cubit.dart';
 import 'package:kaimovies/blocs/movie_upcoming_cubit.dart';
 import 'package:kaimovies/blocs/tv_ota_cubit.dart';
 import 'package:kaimovies/blocs/tv_popular_cubit.dart';
-import 'package:kaimovies/repositories/network/utilities/ui_utils.dart';
+import 'package:kaimovies/utils/ui_utils.dart';
 import 'package:kaimovies/view/tabs/tab_movies.dart';
 import 'package:kaimovies/view/tabs/tab_profile.dart';
 import 'package:kaimovies/view/tabs/tab_televisions.dart';
@@ -56,7 +56,8 @@ class _HomePageState extends State<HomePage> {
       child: MultiBlocProvider(
         providers: [
           BlocProvider(
-              create: (context) => MovieNowPlayingCubit.create(context)..fetch()),
+              create: (context) =>
+                  MovieNowPlayingCubit.create(context)..fetch()),
           BlocProvider(
               create: (context) => MoviePopularCubit.create(context)..fetch()),
           BlocProvider(
@@ -75,9 +76,18 @@ class _HomePageState extends State<HomePage> {
             ),
             bottomNavigationBar: BottomNavigationBar(
               items: const [
-                BottomNavigationBarItem(icon: Icon(Icons.movie), label: 'Movie'),
-                BottomNavigationBarItem(icon: Icon(Icons.tv), label: 'TV'),
-                BottomNavigationBarItem(icon: Icon(Icons.account_circle), label: 'Profile'),
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.movie),
+                  label: 'Movie',
+                ),
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.tv),
+                  label: 'TV',
+                ),
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.account_circle),
+                  label: 'Profile',
+                ),
               ],
               currentIndex: _selectedIndex,
               onTap: _onItemTapped,

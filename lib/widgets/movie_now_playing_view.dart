@@ -4,6 +4,8 @@ import 'package:flutter_card_swiper/flutter_card_swiper.dart';
 import 'package:go_router/go_router.dart';
 import 'package:kaimovies/blocs/movie_now_playing_cubit.dart';
 import 'package:kaimovies/repositories/network/utilities/api_utils.dart';
+import 'package:kaimovies/utils/ui_utils.dart';
+import 'package:kaimovies/view/pages/movie_detail_page.dart';
 
 class NowPlayingMoviesView extends StatelessWidget {
   const NowPlayingMoviesView({super.key});
@@ -39,25 +41,18 @@ class NowPlayingMoviesView extends StatelessWidget {
                     vertical: 15.0,
                   ),
                   cardBuilder: (context, index) {
-                    final posterUrl =
-                        getImageUrl(movies[index].posterPath ?? '');
+                    final movie = movies[index];
+                    final posterUrl = getImageUrl(movie.posterPath ?? '');
                     return GestureDetector(
-                      onTap: () => context.goNamed('movieDetail',
-                          params: {'id': movies[index].id.toString()}),
+                      onTap: () => context.goNamed(MovieDetailPage.name,
+                          params: {'id': movie.id.toString()}),
                       child: Container(
                         clipBehavior: Clip.hardEdge,
                         decoration: BoxDecoration(
                           borderRadius:
                               const BorderRadius.all(Radius.circular(20)),
                           color: Colors.white10,
-                          boxShadow: const [
-                            BoxShadow(
-                              color: Colors.black12,
-                              spreadRadius: 10,
-                              blurRadius: 10,
-                              offset: Offset(0, 3),
-                            )
-                          ],
+                          boxShadow: const [cardShadow],
                           image: DecorationImage(
                             image: Image.network(posterUrl).image,
                             fit: BoxFit.cover,

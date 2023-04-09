@@ -4,6 +4,8 @@ import 'package:flutter_card_swiper/flutter_card_swiper.dart';
 import 'package:go_router/go_router.dart';
 import 'package:kaimovies/blocs/tv_ota_cubit.dart';
 import 'package:kaimovies/repositories/network/utilities/api_utils.dart';
+import 'package:kaimovies/utils/ui_utils.dart';
+import 'package:kaimovies/view/pages/tv_detail_page.dart';
 
 class OnTheAirTvsView extends StatelessWidget {
   const OnTheAirTvsView({super.key});
@@ -39,24 +41,18 @@ class OnTheAirTvsView extends StatelessWidget {
                     vertical: 15.0,
                   ),
                   cardBuilder: (context, index) {
-                    final posterUrl = getImageUrl(tvs[index].posterPath ?? '');
+                    final tv = tvs[index];
+                    final posterUrl = getImageUrl(tv.posterPath ?? '');
                     return GestureDetector(
-                      onTap: () => context.goNamed('tvDetail',
-                          params: {'id': tvs[index].id.toString()}),
+                      onTap: () => context.goNamed(TvDetailPage.name,
+                          params: {'id': tv.id.toString()}),
                       child: Container(
                         clipBehavior: Clip.hardEdge,
                         decoration: BoxDecoration(
                           borderRadius:
                               const BorderRadius.all(Radius.circular(20)),
                           color: Colors.white10,
-                          boxShadow: const [
-                            BoxShadow(
-                              color: Colors.black12,
-                              spreadRadius: 10,
-                              blurRadius: 10,
-                              offset: Offset(0, 3),
-                            )
-                          ],
+                          boxShadow: const [cardShadow],
                           image: DecorationImage(
                             image: Image.network(posterUrl).image,
                             fit: BoxFit.cover,

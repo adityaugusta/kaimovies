@@ -5,10 +5,12 @@ import 'package:go_router/go_router.dart';
 import 'package:kaimovies/blocs/tv_detail_cubit.dart';
 import 'package:kaimovies/blocs/tv_detail_state.dart';
 import 'package:kaimovies/repositories/network/utilities/api_utils.dart';
-import 'package:kaimovies/repositories/network/utilities/ui_utils.dart';
+import 'package:kaimovies/utils/ui_utils.dart';
 
 class TvDetailPage extends StatefulWidget {
   const TvDetailPage(this.tvId, {super.key});
+
+  static const name = 'tvDetail';
 
   final String? tvId;
 

@@ -4,10 +4,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:kaimovies/blocs/movie_detail_cubit.dart';
 import 'package:kaimovies/repositories/network/utilities/api_utils.dart';
-import 'package:kaimovies/repositories/network/utilities/ui_utils.dart';
+import 'package:kaimovies/utils/ui_utils.dart';
 
 class MovieDetailPage extends StatefulWidget {
   const MovieDetailPage(this.movieId, {super.key});
+
+  static const name = 'movieDetail';
 
   final String? movieId;
 

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:kaimovies/repositories/network/utilities/ui_utils.dart';
+import 'package:kaimovies/utils/ui_utils.dart';
 import 'package:kaimovies/widgets/movie_popular_view.dart';
 import 'package:kaimovies/widgets/tv_popular_view.dart';
 
@@ -55,7 +55,7 @@ class _ProfileTabState extends State<ProfileTab>
               ),
             ),
             const SizedBox(height: 40.0),
-            const PopularMoviesView(title: 'Favourite Movies'),
+            const PopularMoviesView(title: 'Favorite Movies'),
             const PopularTvsView(title: "Favourite Tv's"),
           ],
         ),

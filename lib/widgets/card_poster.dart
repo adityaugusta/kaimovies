@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kaimovies/utils/ui_utils.dart';
 
 class PosterCard extends StatelessWidget {
   const PosterCard({
@@ -27,14 +28,7 @@ class PosterCard extends StatelessWidget {
                 decoration: BoxDecoration(
                   borderRadius: const BorderRadius.all(Radius.circular(10)),
                   color: Colors.white10,
-                  boxShadow: const [
-                    BoxShadow(
-                      color: Colors.black12,
-                      spreadRadius: 10,
-                      blurRadius: 10,
-                      offset: Offset(0, 3),
-                    )
-                  ],
+                  boxShadow: const [cardShadow],
                   image: DecorationImage(
                     image: Image.network(imageUrl).image,
                     fit: BoxFit.cover,
