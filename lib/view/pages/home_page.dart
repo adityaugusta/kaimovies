@@ -54,18 +54,12 @@ class _HomePageState extends State<HomePage> {
         systemNavigationBarIconBrightness: Brightness.light,
       ),
       child: MultiBlocProvider(
-        providers: [
-          BlocProvider(
-              create: (context) =>
-                  MovieNowPlayingCubit.create(context)..fetch()),
-          BlocProvider(
-              create: (context) => MoviePopularCubit.create(context)..fetch()),
-          BlocProvider(
-              create: (context) => MovieUpcomingCubit.create(context)..fetch()),
-          BlocProvider(
-              create: (context) => TvOnTheAirCubit.create(context)..fetch()),
-          BlocProvider(
-              create: (context) => TvPopularCubit.create(context)..fetch()),
+        providers: const [
+          BlocProvider(create: MovieNowPlayingCubit.create),
+          BlocProvider(create: MoviePopularCubit.create),
+          BlocProvider(create: MovieUpcomingCubit.create),
+          BlocProvider(create: TvOnTheAirCubit.create),
+          BlocProvider(create: TvPopularCubit.create),
         ],
         child: SafeArea(
           child: Scaffold(

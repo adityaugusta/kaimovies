@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:kaimovies/blocs/movie_now_playing_cubit.dart';
+import 'package:kaimovies/blocs/movie_popular_cubit.dart';
+import 'package:kaimovies/blocs/movie_upcoming_cubit.dart';
 import 'package:kaimovies/widgets/movie_now_playing_view.dart';
 import 'package:kaimovies/widgets/movie_popular_view.dart';
 import 'package:kaimovies/widgets/movie_upcoming_view.dart';
@@ -12,6 +16,13 @@ class MoviesTab extends StatefulWidget {
 
 class _MoviesTabState extends State<MoviesTab>
     with AutomaticKeepAliveClientMixin {
+  @override
+  void initState() {
+    context.read<MovieNowPlayingCubit>().fetch();
+    context.read<MoviePopularCubit>().fetch();
+    context.read<MovieUpcomingCubit>().fetch();
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     super.build(context);

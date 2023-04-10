@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:kaimovies/blocs/tv_ota_cubit.dart';
+import 'package:kaimovies/blocs/tv_popular_cubit.dart';
 import 'package:kaimovies/utils/ui_utils.dart';
 import 'package:kaimovies/widgets/movie_popular_view.dart';
 import 'package:kaimovies/widgets/tv_popular_view.dart';
@@ -12,6 +15,12 @@ class ProfileTab extends StatefulWidget {
 
 class _ProfileTabState extends State<ProfileTab>
     with AutomaticKeepAliveClientMixin {
+  @override
+  void initState() {
+    context.read<TvOnTheAirCubit>().fetch();
+    context.read<TvPopularCubit>().fetch();
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     super.build(context);
