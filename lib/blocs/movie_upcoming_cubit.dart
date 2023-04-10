@@ -7,7 +7,8 @@ import 'movie_upcoming_state.dart';
 export 'movie_upcoming_state.dart';
 
 class MovieUpcomingCubit extends Cubit<MovieUpcomingState> {
-  MovieUpcomingCubit(this._movieRepository) : super(LoadingMovieUpcomingState());
+  MovieUpcomingCubit(this._movieRepository)
+      : super(LoadingMovieUpcomingState());
 
   static MovieUpcomingCubit create(BuildContext context) =>
       MovieUpcomingCubit(injector.get());

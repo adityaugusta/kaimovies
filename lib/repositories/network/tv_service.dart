@@ -7,8 +7,7 @@ part 'tv_service.chopper.dart';
 
 @ChopperApi(baseUrl: '/tv')
 abstract class TvService extends ChopperService {
-  static TvService create([ChopperClient? client]) =>
-      _$TvService(client);
+  static TvService create([ChopperClient? client]) => _$TvService(client);
 
   @Get(path: '/on_the_air')
   Future<Response<TvResponse>> getOnTheAir();

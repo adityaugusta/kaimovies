@@ -44,7 +44,7 @@ Future<void> injectServices() async {
     Review: Review.fromJsonFactory,
   });
   injector.registerLazySingleton<JsonModelConverter>(
-          () => JsonModelConverter(injector.get()));
+      () => JsonModelConverter(injector.get()));
 
   injector.registerLazySingleton<ServiceManager>(() => ServiceManager.create(
       'https://api.themoviedb.org/3',
@@ -54,8 +54,7 @@ Future<void> injectServices() async {
 
   /// inject repositories
   injector.registerLazySingleton<MovieRepository>(
-          () => MovieRepository(injector.get()));
-  injector.registerLazySingleton<TvRepository>(
-          () => TvRepository(injector.get()));
+      () => MovieRepository(injector.get()));
+  injector
+      .registerLazySingleton<TvRepository>(() => TvRepository(injector.get()));
 }
-

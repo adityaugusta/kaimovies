@@ -1,6 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'movie.freezed.dart';
+
 part 'movie.g.dart';
 
 @freezed
@@ -17,8 +18,7 @@ class Movie with _$Movie {
     @Default(0) double voteAverage,
   }) = _Movie;
 
-  factory Movie.fromJson(Map<String, dynamic> json) =>
-      _$MovieFromJson(json);
+  factory Movie.fromJson(Map<String, dynamic> json) => _$MovieFromJson(json);
 
   static const fromJsonFactory = _$MovieFromJson;
 }

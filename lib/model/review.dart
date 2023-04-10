@@ -1,6 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'review.freezed.dart';
+
 part 'review.g.dart';
 
 @freezed
@@ -10,8 +11,7 @@ class Review with _$Review {
     required String content,
   }) = _Review;
 
-  factory Review.fromJson(Map<String, dynamic> json) =>
-      _$ReviewFromJson(json);
+  factory Review.fromJson(Map<String, dynamic> json) => _$ReviewFromJson(json);
 
   static const fromJsonFactory = _$ReviewFromJson;
 }

@@ -7,7 +7,8 @@ part 'movie_popular_state.freezed.dart';
 class MoviePopularState with _$MoviePopularState {
   factory MoviePopularState.loading() = LoadingMoviePopularState;
 
-  factory MoviePopularState.success(List<Movie> movies) = SuccessMoviePopularState;
+  factory MoviePopularState.success(List<Movie> movies) =
+      SuccessMoviePopularState;
 
   factory MoviePopularState.empty() = EmptyMoviePopularState;
 

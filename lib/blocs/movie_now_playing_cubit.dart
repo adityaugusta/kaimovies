@@ -7,7 +7,8 @@ import 'movie_now_playing_state.dart';
 export 'movie_now_playing_state.dart';
 
 class MovieNowPlayingCubit extends Cubit<MovieNowPlayingState> {
-  MovieNowPlayingCubit(this._movieRepository) : super(LoadingMovieNowPlayingState());
+  MovieNowPlayingCubit(this._movieRepository)
+      : super(LoadingMovieNowPlayingState());
 
   static MovieNowPlayingCubit create(BuildContext context) =>
       MovieNowPlayingCubit(injector.get());

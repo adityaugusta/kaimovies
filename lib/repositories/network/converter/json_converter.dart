@@ -30,33 +30,12 @@ class JsonModelConverter extends JsonConverter {
 
   @override
   FutureOr<Response<ResultType>> convertResponse<ResultType, Item>(
-      Response response,
-      ) async {
-    // final String? contentType = response.headers[contentTypeKey];
-    // var body = response.body;
-    //
-    // if (contentType != null && contentType.contains(jsonHeaders)) {
-    //   body = utf8.decode(response.bodyBytes);
-    // }
+    Response response,
+  ) async {
     final jsonRes = await super.convertResponse(response);
     return jsonRes.copyWith<ResultType>(body: _decode<Item>(jsonRes.body));
   }
 
   @override
   Request convertRequest(Request request) => request;
-
-  // @override
-  // Future<Response> convertError<ResultType, Item>(Response response) async {
-  //   final jsonRes = await super.convertError(response);
-  //   if (jsonRes.body is! Map) {
-  //     throw InvalidJsonException(
-  //         'Invalid error response format', StackTrace.current);
-  //   }
-  //
-  //   final mapBody = <String, dynamic>{'body': jsonRes.body};
-  //   final errorResponse = jsonRes.copyWith<ErrorResponse>(
-  //     body: ErrorResponse.fromJsonFactory(mapBody),
-  //   );
-  //   return errorResponse;
-  // }
 }

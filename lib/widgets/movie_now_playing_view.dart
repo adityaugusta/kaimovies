@@ -26,14 +26,14 @@ class NowPlayingMoviesView extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 10.0),
-        BlocBuilder<MovieNowPlayingCubit, MovieNowPlayingState>(
-          builder: (_, state) {
-            if (state is SuccessMovieNowPlayingState) {
-              final movies = state.movies;
-              return SizedBox(
-                width: double.infinity,
-                height: size.height / 2 + 30,
-                child: CardSwiper(
+        SizedBox(
+          width: double.infinity,
+          height: size.height / 2 + 30,
+          child: BlocBuilder<MovieNowPlayingCubit, MovieNowPlayingState>(
+            builder: (_, state) {
+              if (state is SuccessMovieNowPlayingState) {
+                final movies = state.movies;
+                return CardSwiper(
                   cardsCount: movies.length,
                   numberOfCardsDisplayed: 3,
                   padding: const EdgeInsets.symmetric(
@@ -61,11 +61,22 @@ class NowPlayingMoviesView extends StatelessWidget {
                       ),
                     );
                   },
+                );
+              }
+              return Container(
+                clipBehavior: Clip.hardEdge,
+                margin: const EdgeInsets.symmetric(
+                  horizontal: 50.0,
+                  vertical: 15.0,
+                ),
+                decoration: const BoxDecoration(
+                  borderRadius: BorderRadius.all(Radius.circular(20)),
+                  color: Colors.white10,
+                  boxShadow: [cardShadow],
                 ),
               );
-            }
-            return const SizedBox.shrink();
-          },
+            },
+          ),
         ),
       ],
     );

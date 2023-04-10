@@ -7,7 +7,8 @@ part 'movie_upcoming_state.freezed.dart';
 class MovieUpcomingState with _$MovieUpcomingState {
   factory MovieUpcomingState.loading() = LoadingMovieUpcomingState;
 
-  factory MovieUpcomingState.success(List<Movie> movies) = SuccessMovieUpcomingState;
+  factory MovieUpcomingState.success(List<Movie> movies) =
+      SuccessMovieUpcomingState;
 
   factory MovieUpcomingState.empty() = EmptyMovieUpcomingState;
 

@@ -23,6 +23,7 @@ class _MoviesTabState extends State<MoviesTab>
     context.read<MovieUpcomingCubit>().fetch();
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     super.build(context);

@@ -7,7 +7,8 @@ part 'movie_now_playing_state.freezed.dart';
 class MovieNowPlayingState with _$MovieNowPlayingState {
   factory MovieNowPlayingState.loading() = LoadingMovieNowPlayingState;
 
-  factory MovieNowPlayingState.success(List<Movie> movies) = SuccessMovieNowPlayingState;
+  factory MovieNowPlayingState.success(List<Movie> movies) =
+      SuccessMovieNowPlayingState;
 
   factory MovieNowPlayingState.empty() = EmptyMovieNowPlayingState;
 

@@ -7,8 +7,7 @@ part 'movie_service.chopper.dart';
 
 @ChopperApi(baseUrl: '/movie')
 abstract class MovieService extends ChopperService {
-  static MovieService create([ChopperClient? client]) =>
-      _$MovieService(client);
+  static MovieService create([ChopperClient? client]) => _$MovieService(client);
 
   @Get(path: '/now_playing')
   Future<Response<MovieResponse>> getNowPlaying();
@@ -23,5 +22,6 @@ abstract class MovieService extends ChopperService {
   Future<Response<Movie>> getMovieDetail(@Path('movie_id') String movieId);
 
   @Get(path: '/{movie_id}/reviews')
-  Future<Response<ReviewResponse>> getMovieReviews(@Path('movie_id') String movieId);
+  Future<Response<ReviewResponse>> getMovieReviews(
+      @Path('movie_id') String movieId);
 }

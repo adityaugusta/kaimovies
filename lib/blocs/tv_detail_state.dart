@@ -8,7 +8,8 @@ part 'tv_detail_state.freezed.dart';
 class TvDetailState with _$TvDetailState {
   factory TvDetailState.loading() = LoadingTvDetailState;
 
-  factory TvDetailState.success(Tv tv, List<Review> reviews) = SuccessTvDetailState;
+  factory TvDetailState.success(Tv tv, List<Review> reviews) =
+      SuccessTvDetailState;
 
   factory TvDetailState.empty() = EmptyTvDetailState;
 
