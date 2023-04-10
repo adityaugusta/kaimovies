@@ -1,6 +1,6 @@
-# kaimovies
+# Kai Movies
 
-A new Flutter project.
+A simple TMDB Movie Application.
 
 ## Getting Started
 
