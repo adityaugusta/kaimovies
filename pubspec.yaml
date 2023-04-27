@@ -12,6 +12,7 @@ dependencies:
 
   cupertino_icons: ^1.0.2
 
+  auto_size_text: ^3.0.0
   chopper: ^6.1.1
   flutter_bloc: ^8.1.2
   flutter_card_swiper: ^4.1.0+2
@@ -37,6 +38,7 @@ flutter:
   uses-material-design: true
   assets:
     - assets/app_logo.png
+    - assets/background.png
 
 flutter_icons:
   android: "launcher_icon"

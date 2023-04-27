@@ -4,7 +4,7 @@ import 'package:kaimovies/blocs/tv_detail_state.dart';
 import 'package:kaimovies/injector.dart';
 import 'package:kaimovies/repositories/tv_repository.dart';
 
-export 'movie_popular_state.dart';
+export 'tv_detail_state.dart';
 
 class TvDetailCubit extends Cubit<TvDetailState> {
   TvDetailCubit(this._tvRepository) : super(TvDetailState.loading());

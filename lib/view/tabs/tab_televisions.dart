@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kaimovies/blocs/tv_ota_cubit.dart';
 import 'package:kaimovies/blocs/tv_popular_cubit.dart';
-import 'package:kaimovies/widgets/tv_ota_view.dart';
-import 'package:kaimovies/widgets/tv_popular_view.dart';
+import 'package:kaimovies/widgets/tv/tv_ota_view.dart';
+import 'package:kaimovies/widgets/tv/tv_popular_view.dart';
 
 class TelevisionsTab extends StatefulWidget {
   const TelevisionsTab({super.key});
@@ -28,7 +28,7 @@ class _TelevisionsTabState extends State<TelevisionsTab>
       width: double.infinity,
       height: double.infinity,
       child: SingleChildScrollView(
-        padding: const EdgeInsets.all(15.0),
+        padding: const EdgeInsets.symmetric(vertical: 15.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: const [
