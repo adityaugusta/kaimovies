@@ -11,8 +11,7 @@ class ButtonBack extends StatelessWidget {
       child: Container(
         padding: const EdgeInsets.all(7.5),
         decoration: const BoxDecoration(
-          borderRadius:
-          BorderRadius.all(Radius.circular(50.0)),
+          borderRadius: BorderRadius.all(Radius.circular(50.0)),
           color: Colors.black45,
         ),
         child: const Icon(Icons.arrow_back_ios_rounded,
