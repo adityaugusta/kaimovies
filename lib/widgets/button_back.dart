@@ -9,13 +9,16 @@ class ButtonBack extends StatelessWidget {
     return GestureDetector(
       onTap: () => context.pop(),
       child: Container(
-        padding: const EdgeInsets.all(7.5),
+        padding: const EdgeInsets.all(10),
         decoration: const BoxDecoration(
           borderRadius: BorderRadius.all(Radius.circular(50.0)),
-          color: Colors.black45,
+          color: Colors.black38,
         ),
-        child: const Icon(Icons.arrow_back_ios_rounded,
-            color: Colors.white, size: 20.0),
+        child: const Icon(
+          Icons.arrow_back_ios_rounded,
+          color: Colors.white,
+          size: 20,
+        ),
       ),
     );
   }

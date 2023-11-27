@@ -10,6 +10,7 @@ class Movie with _$Movie {
     String? posterPath,
     String? backdropPath,
     required String title,
+    String? tagline,
     required String overview,
     required bool adult,
     required String releaseDate,

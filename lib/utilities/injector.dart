@@ -11,6 +11,7 @@ import 'package:kaimovies/features/tv/models/tv_response.dart';
 import 'package:kaimovies/features/tv/repositories/services/tv_service.dart';
 import 'package:kaimovies/features/tv/repositories/tv_repository.dart';
 import 'package:kaimovies/repositories/network/service_manager.dart';
+import 'package:kaimovies/repositories/network/utilities/api_utils.dart' as api_utils;
 import 'package:kaimovies/repositories/network/utilities/json_converter.dart';
 
 const namedService = 'service';
@@ -47,7 +48,7 @@ Future<void> injectServices() async {
       () => JsonModelConverter(injector.get()));
 
   injector.registerLazySingleton<ServiceManager>(() => ServiceManager.create(
-      'https://api.themoviedb.org/3',
+      api_utils.baseUrl,
       injector.get(),
       injector.get(instanceName: namedService)));
   injector.get<ServiceManager>();

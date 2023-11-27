@@ -24,6 +24,7 @@ mixin _$Movie {
   String? get posterPath => throw _privateConstructorUsedError;
   String? get backdropPath => throw _privateConstructorUsedError;
   String get title => throw _privateConstructorUsedError;
+  String? get tagline => throw _privateConstructorUsedError;
   String get overview => throw _privateConstructorUsedError;
   bool get adult => throw _privateConstructorUsedError;
   String get releaseDate => throw _privateConstructorUsedError;
@@ -45,6 +46,7 @@ abstract class $MovieCopyWith<$Res> {
       String? posterPath,
       String? backdropPath,
       String title,
+      String? tagline,
       String overview,
       bool adult,
       String releaseDate,
@@ -69,6 +71,7 @@ class _$MovieCopyWithImpl<$Res, $Val extends Movie>
     Object? posterPath = freezed,
     Object? backdropPath = freezed,
     Object? title = null,
+    Object? tagline = freezed,
     Object? overview = null,
     Object? adult = null,
     Object? releaseDate = null,
@@ -92,6 +95,10 @@ class _$MovieCopyWithImpl<$Res, $Val extends Movie>
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
               as String,
+      tagline: freezed == tagline
+          ? _value.tagline
+          : tagline // ignore: cast_nullable_to_non_nullable
+              as String?,
       overview: null == overview
           ? _value.overview
           : overview // ignore: cast_nullable_to_non_nullable
@@ -128,6 +135,7 @@ abstract class _$$MovieImplCopyWith<$Res> implements $MovieCopyWith<$Res> {
       String? posterPath,
       String? backdropPath,
       String title,
+      String? tagline,
       String overview,
       bool adult,
       String releaseDate,
@@ -150,6 +158,7 @@ class __$$MovieImplCopyWithImpl<$Res>
     Object? posterPath = freezed,
     Object? backdropPath = freezed,
     Object? title = null,
+    Object? tagline = freezed,
     Object? overview = null,
     Object? adult = null,
     Object? releaseDate = null,
@@ -173,6 +182,10 @@ class __$$MovieImplCopyWithImpl<$Res>
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
               as String,
+      tagline: freezed == tagline
+          ? _value.tagline
+          : tagline // ignore: cast_nullable_to_non_nullable
+              as String?,
       overview: null == overview
           ? _value.overview
           : overview // ignore: cast_nullable_to_non_nullable
@@ -205,6 +218,7 @@ class _$MovieImpl implements _Movie {
       this.posterPath,
       this.backdropPath,
       required this.title,
+      this.tagline,
       required this.overview,
       required this.adult,
       required this.releaseDate,
@@ -223,6 +237,8 @@ class _$MovieImpl implements _Movie {
   @override
   final String title;
   @override
+  final String? tagline;
+  @override
   final String overview;
   @override
   final bool adult;
@@ -237,7 +253,7 @@ class _$MovieImpl implements _Movie {
 
   @override
   String toString() {
-    return 'Movie(id: $id, posterPath: $posterPath, backdropPath: $backdropPath, title: $title, overview: $overview, adult: $adult, releaseDate: $releaseDate, popularity: $popularity, voteAverage: $voteAverage)';
+    return 'Movie(id: $id, posterPath: $posterPath, backdropPath: $backdropPath, title: $title, tagline: $tagline, overview: $overview, adult: $adult, releaseDate: $releaseDate, popularity: $popularity, voteAverage: $voteAverage)';
   }
 
   @override
@@ -251,6 +267,7 @@ class _$MovieImpl implements _Movie {
             (identical(other.backdropPath, backdropPath) ||
                 other.backdropPath == backdropPath) &&
             (identical(other.title, title) || other.title == title) &&
+            (identical(other.tagline, tagline) || other.tagline == tagline) &&
             (identical(other.overview, overview) ||
                 other.overview == overview) &&
             (identical(other.adult, adult) || other.adult == adult) &&
@@ -265,7 +282,7 @@ class _$MovieImpl implements _Movie {
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, id, posterPath, backdropPath,
-      title, overview, adult, releaseDate, popularity, voteAverage);
+      title, tagline, overview, adult, releaseDate, popularity, voteAverage);
 
   @JsonKey(ignore: true)
   @override
@@ -287,6 +304,7 @@ abstract class _Movie implements Movie {
       final String? posterPath,
       final String? backdropPath,
       required final String title,
+      final String? tagline,
       required final String overview,
       required final bool adult,
       required final String releaseDate,
@@ -303,6 +321,8 @@ abstract class _Movie implements Movie {
   String? get backdropPath;
   @override
   String get title;
+  @override
+  String? get tagline;
   @override
   String get overview;
   @override

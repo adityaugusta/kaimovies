@@ -10,6 +10,7 @@ class Tv with _$Tv {
     String? posterPath,
     String? backdropPath,
     required String name,
+    String? tagline,
     required String overview,
     required String firstAirDate,
     @Default(0) double popularity,

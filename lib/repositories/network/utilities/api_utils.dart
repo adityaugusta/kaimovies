@@ -1,3 +1,5 @@
-const _baseImageUrl = 'https://image.tmdb.org/t/p/w500';
+const baseUrl = 'https://api.themoviedb.org/3';
+const baseImageUrl = 'https://image.tmdb.org/t/p/w500';
+const baseVideoYoutubeUrl = 'https://www.youtube.com/watch?v=';
 
-String getImageUrl(String path) => _baseImageUrl + path;
+String getImageUrl(String path) => baseImageUrl + path;

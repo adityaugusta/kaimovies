@@ -11,6 +11,7 @@ _$MovieImpl _$$MovieImplFromJson(Map<String, dynamic> json) => _$MovieImpl(
       posterPath: json['poster_path'] as String?,
       backdropPath: json['backdrop_path'] as String?,
       title: json['title'] as String,
+      tagline: json['tagline'] as String?,
       overview: json['overview'] as String,
       adult: json['adult'] as bool,
       releaseDate: json['release_date'] as String,
@@ -32,6 +33,7 @@ Map<String, dynamic> _$$MovieImplToJson(_$MovieImpl instance) {
   writeNotNull('poster_path', instance.posterPath);
   writeNotNull('backdrop_path', instance.backdropPath);
   val['title'] = instance.title;
+  writeNotNull('tagline', instance.tagline);
   val['overview'] = instance.overview;
   val['adult'] = instance.adult;
   val['release_date'] = instance.releaseDate;

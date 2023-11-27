@@ -24,6 +24,7 @@ mixin _$Tv {
   String? get posterPath => throw _privateConstructorUsedError;
   String? get backdropPath => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
+  String? get tagline => throw _privateConstructorUsedError;
   String get overview => throw _privateConstructorUsedError;
   String get firstAirDate => throw _privateConstructorUsedError;
   double get popularity => throw _privateConstructorUsedError;
@@ -44,6 +45,7 @@ abstract class $TvCopyWith<$Res> {
       String? posterPath,
       String? backdropPath,
       String name,
+      String? tagline,
       String overview,
       String firstAirDate,
       double popularity,
@@ -66,6 +68,7 @@ class _$TvCopyWithImpl<$Res, $Val extends Tv> implements $TvCopyWith<$Res> {
     Object? posterPath = freezed,
     Object? backdropPath = freezed,
     Object? name = null,
+    Object? tagline = freezed,
     Object? overview = null,
     Object? firstAirDate = null,
     Object? popularity = null,
@@ -88,6 +91,10 @@ class _$TvCopyWithImpl<$Res, $Val extends Tv> implements $TvCopyWith<$Res> {
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
+      tagline: freezed == tagline
+          ? _value.tagline
+          : tagline // ignore: cast_nullable_to_non_nullable
+              as String?,
       overview: null == overview
           ? _value.overview
           : overview // ignore: cast_nullable_to_non_nullable
@@ -119,6 +126,7 @@ abstract class _$$TvImplCopyWith<$Res> implements $TvCopyWith<$Res> {
       String? posterPath,
       String? backdropPath,
       String name,
+      String? tagline,
       String overview,
       String firstAirDate,
       double popularity,
@@ -138,6 +146,7 @@ class __$$TvImplCopyWithImpl<$Res> extends _$TvCopyWithImpl<$Res, _$TvImpl>
     Object? posterPath = freezed,
     Object? backdropPath = freezed,
     Object? name = null,
+    Object? tagline = freezed,
     Object? overview = null,
     Object? firstAirDate = null,
     Object? popularity = null,
@@ -160,6 +169,10 @@ class __$$TvImplCopyWithImpl<$Res> extends _$TvCopyWithImpl<$Res, _$TvImpl>
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
+      tagline: freezed == tagline
+          ? _value.tagline
+          : tagline // ignore: cast_nullable_to_non_nullable
+              as String?,
       overview: null == overview
           ? _value.overview
           : overview // ignore: cast_nullable_to_non_nullable
@@ -188,6 +201,7 @@ class _$TvImpl implements _Tv {
       this.posterPath,
       this.backdropPath,
       required this.name,
+      this.tagline,
       required this.overview,
       required this.firstAirDate,
       this.popularity = 0,
@@ -205,6 +219,8 @@ class _$TvImpl implements _Tv {
   @override
   final String name;
   @override
+  final String? tagline;
+  @override
   final String overview;
   @override
   final String firstAirDate;
@@ -217,7 +233,7 @@ class _$TvImpl implements _Tv {
 
   @override
   String toString() {
-    return 'Tv(id: $id, posterPath: $posterPath, backdropPath: $backdropPath, name: $name, overview: $overview, firstAirDate: $firstAirDate, popularity: $popularity, voteAverage: $voteAverage)';
+    return 'Tv(id: $id, posterPath: $posterPath, backdropPath: $backdropPath, name: $name, tagline: $tagline, overview: $overview, firstAirDate: $firstAirDate, popularity: $popularity, voteAverage: $voteAverage)';
   }
 
   @override
@@ -231,6 +247,7 @@ class _$TvImpl implements _Tv {
             (identical(other.backdropPath, backdropPath) ||
                 other.backdropPath == backdropPath) &&
             (identical(other.name, name) || other.name == name) &&
+            (identical(other.tagline, tagline) || other.tagline == tagline) &&
             (identical(other.overview, overview) ||
                 other.overview == overview) &&
             (identical(other.firstAirDate, firstAirDate) ||
@@ -244,7 +261,7 @@ class _$TvImpl implements _Tv {
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, id, posterPath, backdropPath,
-      name, overview, firstAirDate, popularity, voteAverage);
+      name, tagline, overview, firstAirDate, popularity, voteAverage);
 
   @JsonKey(ignore: true)
   @override
@@ -266,6 +283,7 @@ abstract class _Tv implements Tv {
       final String? posterPath,
       final String? backdropPath,
       required final String name,
+      final String? tagline,
       required final String overview,
       required final String firstAirDate,
       final double popularity,
@@ -281,6 +299,8 @@ abstract class _Tv implements Tv {
   String? get backdropPath;
   @override
   String get name;
+  @override
+  String? get tagline;
   @override
   String get overview;
   @override
