@@ -55,6 +55,7 @@ class _MoviesTabState extends State<MoviesTab>
                     backgroundColor.withOpacity(0.45),
                     Colors.transparent,
                     backgroundColor.withOpacity(0.45),
+                    backgroundColor.withOpacity(0.70),
                     backgroundColor.withOpacity(0.90),
                     backgroundColor,
                   ],

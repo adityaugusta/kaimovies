@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kaimovies/widgets/kai_section_title_view.dart';
 
 class OverviewView extends StatelessWidget {
   const OverviewView(this.overview, {super.key});
@@ -7,16 +8,13 @@ class OverviewView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        const Text(
-          'Overview',
-          style: TextStyle(fontSize: 19.0, fontWeight: FontWeight.bold),
-        ),
-        const SizedBox(height: 10.0),
-        Text(overview, style: const TextStyle(fontSize: 15.0)),
-      ],
+    return KaiSectionTitleView(
+      title: 'Overview',
+      content: Text(
+        overview,
+        textAlign: TextAlign.justify,
+        style: const TextStyle(fontSize: 15.0, height: 1.1),
+      ),
     );
   }
 }
