@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:kaimovies/features/movie/screens/widgets/movie_popular_view.dart';
-import 'package:kaimovies/features/tv/screens/widgets/tv_popular_view.dart';
 import 'package:kaimovies/utilities/ui_utils.dart';
 
 class ProfileTab extends StatefulWidget {

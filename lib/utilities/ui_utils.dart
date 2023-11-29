@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 
-const backgroundColor = Color(0xff12141a);
+const colorBlack45 = Color(0x73000000);
+const backgroundColor = Color(0xFF12141A);
 const backgroundLightColor = Color(0xFF30313D);
+
+const defaultBorderRadius = 20.0;
 
 const cardShadow = BoxShadow(
   color: Colors.black12,
@@ -36,3 +39,17 @@ const textShadowSmall = [
     offset: Offset(0, 2.5),
   )
 ];
+
+LinearGradient backgroundGradient = LinearGradient(
+  begin: Alignment.topCenter,
+  end: Alignment.bottomCenter,
+  colors: [
+    Colors.black45.withOpacity(0.45),
+    Colors.transparent,
+    Colors.transparent,
+    backgroundColor.withOpacity(0.45),
+    backgroundColor.withOpacity(0.9),
+    backgroundColor,
+    backgroundColor,
+  ],
+);
