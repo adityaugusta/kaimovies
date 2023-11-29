@@ -220,7 +220,7 @@ class _$MovieImpl implements _Movie {
       required this.title,
       this.tagline,
       required this.overview,
-      required this.adult,
+      this.adult = false,
       required this.releaseDate,
       this.popularity = 0,
       this.voteAverage = 0});
@@ -241,6 +241,7 @@ class _$MovieImpl implements _Movie {
   @override
   final String overview;
   @override
+  @JsonKey()
   final bool adult;
   @override
   final String releaseDate;
@@ -306,7 +307,7 @@ abstract class _Movie implements Movie {
       required final String title,
       final String? tagline,
       required final String overview,
-      required final bool adult,
+      final bool adult,
       required final String releaseDate,
       final double popularity,
       final double voteAverage}) = _$MovieImpl;

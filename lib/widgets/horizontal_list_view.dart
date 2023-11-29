@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:kaimovies/features/movie/models/movie.dart';
 import 'package:kaimovies/features/tv/models/tv.dart';
-import 'package:kaimovies/repositories/network/utilities/api_utils.dart';
+import 'package:kaimovies/repositories/services/utilities/api_utils.dart';
 import 'package:kaimovies/utilities/ui_utils.dart';
-import 'package:kaimovies/widgets/card_poster.dart';
+import 'package:kaimovies/widgets/kai_poster_card.dart';
 
 class HorizontalListView<T> extends StatelessWidget {
   const HorizontalListView({

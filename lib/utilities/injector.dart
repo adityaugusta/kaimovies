@@ -10,9 +10,9 @@ import 'package:kaimovies/features/tv/models/tv.dart';
 import 'package:kaimovies/features/tv/models/tv_response.dart';
 import 'package:kaimovies/features/tv/repositories/services/tv_service.dart';
 import 'package:kaimovies/features/tv/repositories/tv_repository.dart';
-import 'package:kaimovies/repositories/network/service_manager.dart';
-import 'package:kaimovies/repositories/network/utilities/api_utils.dart' as api_utils;
-import 'package:kaimovies/repositories/network/utilities/json_converter.dart';
+import 'package:kaimovies/repositories/services/service_manager.dart';
+import 'package:kaimovies/repositories/services/utilities/api_utils.dart' as api_utils;
+import 'package:kaimovies/repositories/services/utilities/json_converter.dart';
 
 const namedService = 'service';
 

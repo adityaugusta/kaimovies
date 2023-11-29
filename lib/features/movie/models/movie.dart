@@ -12,13 +12,20 @@ class Movie with _$Movie {
     required String title,
     String? tagline,
     required String overview,
-    required bool adult,
+    @Default(false) bool adult,
     required String releaseDate,
     @Default(0) double popularity,
     @Default(0) double voteAverage,
   }) = _Movie;
 
   factory Movie.fromJson(Map<String, dynamic> json) => _$MovieFromJson(json);
+
+  static const Movie empty = Movie(
+    id: -1,
+    title: '',
+    overview: '',
+    releaseDate: '',
+  );
 
   static const fromJsonFactory = _$MovieFromJson;
 }

@@ -7,9 +7,7 @@ import 'package:kaimovies/features/movie/screens/pages/movie_detail_page.dart';
 import 'package:kaimovies/widgets/horizontal_list_view.dart';
 
 class PopularMoviesView extends StatelessWidget {
-  const PopularMoviesView({super.key, this.title});
-
-  final String? title;
+  const PopularMoviesView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +17,7 @@ class PopularMoviesView extends StatelessWidget {
           final movies = state.movies;
           return HorizontalListView<Movie>(
             key: const PageStorageKey<String>('movie_popular'),
-            title: title ?? 'Popular',
+            title: 'Popular',
             data: movies,
             onItemTap: (movie) => context.goNamed(MovieDetailPage.name,
                 pathParameters: {'id': movie.id.toString()}),

@@ -13,7 +13,7 @@ _$MovieImpl _$$MovieImplFromJson(Map<String, dynamic> json) => _$MovieImpl(
       title: json['title'] as String,
       tagline: json['tagline'] as String?,
       overview: json['overview'] as String,
-      adult: json['adult'] as bool,
+      adult: json['adult'] as bool? ?? false,
       releaseDate: json['release_date'] as String,
       popularity: (json['popularity'] as num?)?.toDouble() ?? 0,
       voteAverage: (json['vote_average'] as num?)?.toDouble() ?? 0,
