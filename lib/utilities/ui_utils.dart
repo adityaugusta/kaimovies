@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-const backgroundColor = Color(0xff191b23);
-const backgroundLightColor = Color(0xFF262731);
+const backgroundColor = Color(0xff12141a);
+const backgroundLightColor = Color(0xFF30313D);
 
 const cardShadow = BoxShadow(
   color: Colors.black12,

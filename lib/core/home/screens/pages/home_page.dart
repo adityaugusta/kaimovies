@@ -1,10 +1,13 @@
+import 'dart:ui' show Brightness, FontWeight, ImageFilter;
+
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter/services.dart'
+    show Brightness, FontWeight, SystemUiOverlayStyle;
+import 'package:flutter_bloc/flutter_bloc.dart'
+    show BlocProvider, MultiBlocProvider;
 import 'package:kaimovies/core/home/screens/widgets/tab_movies.dart';
 import 'package:kaimovies/core/home/screens/widgets/tab_profile.dart';
 import 'package:kaimovies/core/home/screens/widgets/tab_televisions.dart';
-import 'package:kaimovies/core/page/base_page.dart';
 import 'package:kaimovies/features/movie/screens/blocs/movie_now_playing_cubit.dart';
 import 'package:kaimovies/features/movie/screens/blocs/movie_popular_cubit.dart';
 import 'package:kaimovies/features/movie/screens/blocs/movie_upcoming_cubit.dart';
@@ -20,7 +23,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  int _selectedIndex = 0;
   final _pages = const <Widget>[
     MoviesTab(key: PageStorageKey<String>('tab_movies')),
     TelevisionsTab(key: PageStorageKey<String>('tab_televisions')),
@@ -28,16 +30,7 @@ class _HomePageState extends State<HomePage> {
   ];
   final _pageController = PageController();
 
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-      _pageController.animateToPage(
-        index,
-        curve: Curves.easeIn,
-        duration: const Duration(milliseconds: 100),
-      );
-    });
-  }
+  int _selectedIndex = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -46,7 +39,7 @@ class _HomePageState extends State<HomePage> {
         statusBarColor: Colors.transparent,
         statusBarIconBrightness: Brightness.light,
         statusBarBrightness: Brightness.dark,
-        systemNavigationBarColor: Colors.transparent,
+        systemNavigationBarColor: backgroundColor,
         systemNavigationBarIconBrightness: Brightness.dark,
       ),
       child: MultiBlocProvider(
@@ -59,35 +52,64 @@ class _HomePageState extends State<HomePage> {
         ],
         child: SafeArea(
           top: false,
+          bottom: false,
           child: Scaffold(
+            extendBody: true,
             body: PageView(
-              controller: _pageController,
               physics: const NeverScrollableScrollPhysics(),
+              controller: _pageController,
               children: _pages,
             ),
-            bottomNavigationBar: BottomNavigationBar(
-              items: const [
-                BottomNavigationBarItem(
-                  icon: Icon(Icons.movie),
-                  label: 'Movie',
+            bottomNavigationBar: ClipRRect(
+              child: BackdropFilter(
+                filter: ImageFilter.blur(sigmaX: 8, sigmaY: 8),
+                child: Theme(
+                  data: ThemeData(highlightColor: Colors.transparent),
+                  child: BottomNavigationBar(
+                    backgroundColor: backgroundLightColor.withOpacity(0.5),
+                    selectedItemColor: Colors.white,
+                    unselectedItemColor: Colors.grey,
+                    selectedLabelStyle: const TextStyle(
+                        fontSize: 12.5, fontWeight: FontWeight.bold),
+                    unselectedLabelStyle: const TextStyle(fontSize: 12.0),
+                    iconSize: 28,
+                    currentIndex: _selectedIndex,
+                    items: const [
+                      BottomNavigationBarItem(
+                        icon: Icon(Icons.movie_creation_outlined),
+                        activeIcon: Icon(Icons.movie),
+                        label: 'Movie',
+                      ),
+                      BottomNavigationBarItem(
+                        icon: Icon(Icons.panorama_wide_angle_rounded),
+                        activeIcon: Icon(Icons.panorama_wide_angle_select),
+                        label: 'TV',
+                      ),
+                      BottomNavigationBarItem(
+                        icon: Icon(Icons.account_circle_outlined),
+                        activeIcon: Icon(Icons.account_circle),
+                        label: 'Profile',
+                      ),
+                    ],
+                    onTap: _onItemTapped,
+                  ),
                 ),
-                BottomNavigationBarItem(
-                  icon: Icon(Icons.tv),
-                  label: 'TV',
-                ),
-                BottomNavigationBarItem(
-                  icon: Icon(Icons.account_circle),
-                  label: 'Profile',
-                ),
-              ],
-              currentIndex: _selectedIndex,
-              onTap: _onItemTapped,
-              iconSize: 28,
-              backgroundColor: backgroundLightColor,
+              ),
             ),
           ),
         ),
       ),
     );
+  }
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+      _pageController.animateToPage(
+        index,
+        curve: Curves.easeIn,
+        duration: const Duration(milliseconds: 100),
+      );
+    });
   }
 }
