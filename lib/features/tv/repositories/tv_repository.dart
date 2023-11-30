@@ -1,6 +1,6 @@
 import 'package:kaimovies/features/review/models/review.dart';
 import 'package:kaimovies/features/tv/models/tv.dart';
-import 'package:kaimovies/features/tv/repositories/services/tv_service.dart';
+import 'package:kaimovies/features/tv/repositories/network/tv_service.dart';
 
 class TvRepository {
   TvRepository(this._tvService);

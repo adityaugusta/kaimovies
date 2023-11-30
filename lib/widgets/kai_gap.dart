@@ -4,8 +4,11 @@ import 'package:gap/gap.dart';
 class KaiGap extends StatelessWidget {
   const KaiGap(this.mainAxisExtent, {super.key});
 
+  static const KaiGap s5 = KaiGap(5);
   static const KaiGap s10 = KaiGap(10);
   static const KaiGap s15 = KaiGap(15);
+  static const KaiGap s30 = KaiGap(30);
+  static const KaiGap s40 = KaiGap(40);
 
   final double mainAxisExtent;
 

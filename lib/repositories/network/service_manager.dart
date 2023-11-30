@@ -1,6 +1,6 @@
 import 'package:chopper/chopper.dart';
-import 'package:kaimovies/repositories/services/utilities/header_interceptor.dart';
-import 'package:kaimovies/repositories/services/utilities/json_converter.dart';
+import 'package:kaimovies/repositories/network/utilities/header_interceptor.dart';
+import 'package:kaimovies/repositories/network/utilities/json_converter.dart';
 
 class ServiceManager {
   ServiceManager._(

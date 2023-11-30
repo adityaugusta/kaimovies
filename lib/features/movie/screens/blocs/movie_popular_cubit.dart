@@ -16,10 +16,10 @@ class MoviePopularCubit extends Cubit<MoviePopularState> {
 
   final MovieRepository _movieRepository;
 
-  Future<void> fetch() async {
+  Future<void> fetch({isRefresh = false}) async {
     try {
       emit(LoadingMoviePopularState());
-      final res = await _movieRepository.fetchPopular();
+      final res = await _movieRepository.fetchPopular(isRefresh: isRefresh);
       if (res != null && res.isNotEmpty) {
         emit(SuccessMoviePopularState(res));
       } else {

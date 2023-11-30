@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:kaimovies/widgets/kai_gap.dart';
 
-class KaiSectionTitleView extends StatelessWidget {
-  const KaiSectionTitleView({
+class SectionTitleView extends StatelessWidget {
+  const SectionTitleView({
     super.key,
     required this.title,
     required this.content,

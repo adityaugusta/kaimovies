@@ -17,12 +17,13 @@ class MovieNowPlayingCubit extends Cubit<MovieNowPlayingState> {
 
   final MovieRepository _movieRepository;
 
-  Future<void> fetch() async {
+  Future<void> fetch({isRefresh = false}) async {
     try {
       emit(LoadingMovieNowPlayingState());
-      final res = await _movieRepository.fetchNowPlaying();
-      if (res != null && res.isNotEmpty) {
-        emit(SuccessMovieNowPlayingState(res));
+      final response =
+          await _movieRepository.fetchNowPlaying(isRefresh: isRefresh);
+      if (response != null && response.isNotEmpty) {
+        emit(SuccessMovieNowPlayingState(response));
       } else {
         emit(EmptyMovieNowPlayingState());
       }

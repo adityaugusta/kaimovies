@@ -17,10 +17,10 @@ class MovieUpcomingCubit extends Cubit<MovieUpcomingState> {
 
   final MovieRepository _movieRepository;
 
-  Future<void> fetch() async {
+  Future<void> fetch({isRefresh = false}) async {
     try {
       emit(LoadingMovieUpcomingState());
-      final res = await _movieRepository.fetchUpcoming();
+      final res = await _movieRepository.fetchUpcoming(isRefresh: isRefresh);
       if (res != null && res.isNotEmpty) {
         emit(SuccessMovieUpcomingState(res));
       } else {
