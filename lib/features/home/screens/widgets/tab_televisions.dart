@@ -20,7 +20,7 @@ class TelevisionsTab extends StatefulWidget {
 
 class _TelevisionsTabState extends State<TelevisionsTab>
     with AutomaticKeepAliveClientMixin {
-  final _backgroundImage = PosterValueController(null);
+  final _posterValueController = PosterValueController(null);
 
   @override
   void initState() {
@@ -33,17 +33,17 @@ class _TelevisionsTabState extends State<TelevisionsTab>
   Widget build(BuildContext context) {
     super.build(context);
     return ValueListenableBuilder(
-      valueListenable: _backgroundImage,
+      valueListenable: _posterValueController,
       builder: (context, value, _) {
-        final image = value?.image;
-        return Container(
+        // final image = value;
+        return SizedBox/*Container*/(
           width: double.infinity,
           height: double.infinity,
-          decoration: BoxDecoration(
-            image: image != null
-                ? DecorationImage(image: image, fit: BoxFit.cover)
-                : null,
-          ),
+          // decoration: BoxDecoration(
+          //   image: image != null
+          //       ? DecorationImage(image: image, fit: BoxFit.cover)
+          //       : null,
+          // ),
           child: BackdropFilter(
             filter: ImageFilter.blur(sigmaX: 20, sigmaY: 20),
             child: DecoratedBox(
@@ -53,12 +53,14 @@ class _TelevisionsTabState extends State<TelevisionsTab>
                   top: 15 + context.screenPadding.top,
                   bottom: 15 + context.screenPadding.bottom,
                 ),
-                child: Column(
+                child: const Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    OnTheAirTvsView(backgroundImage: _backgroundImage),
+                    OnTheAirTvsView(
+                      // posterValueController: _posterValueController,
+                    ),
                     KaiGap.s40,
-                    const PopularTvsView(),
+                    PopularTvsView(),
                   ],
                 ),
               ),

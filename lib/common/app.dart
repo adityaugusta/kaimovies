@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:kaimovies/core/router/kai_router.dart';
+import 'package:kaimovies/common/router/kai_router.dart';
 import 'package:kaimovies/utilities/ui_utils.dart';
 
 final _router = GoRouter(routes: $appRoutes, debugLogDiagnostics: true);
@@ -44,7 +44,6 @@ class App extends StatelessWidget {
 
   ThemeData _buildTheme() {
     var baseTheme = ThemeData.dark().copyWith(
-      useMaterial3: true,
       brightness: Brightness.light,
       colorScheme: ColorScheme.fromSwatch().copyWith(
         primary: Colors.teal,

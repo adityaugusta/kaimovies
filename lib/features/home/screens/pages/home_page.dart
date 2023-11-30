@@ -5,9 +5,9 @@ import 'package:flutter/services.dart'
     show Brightness, FontWeight, SystemUiOverlayStyle;
 import 'package:flutter_bloc/flutter_bloc.dart'
     show BlocProvider, MultiBlocProvider;
-import 'package:kaimovies/core/home/screens/widgets/tab_movies.dart';
-import 'package:kaimovies/core/home/screens/widgets/tab_profile.dart';
-import 'package:kaimovies/core/home/screens/widgets/tab_televisions.dart';
+import 'package:kaimovies/features/home/screens/widgets/tab_movies.dart';
+import 'package:kaimovies/features/home/screens/widgets/tab_profile.dart';
+import 'package:kaimovies/features/home/screens/widgets/tab_televisions.dart';
 import 'package:kaimovies/features/movie/screens/blocs/movie_now_playing_cubit.dart';
 import 'package:kaimovies/features/movie/screens/blocs/movie_popular_cubit.dart';
 import 'package:kaimovies/features/movie/screens/blocs/movie_upcoming_cubit.dart';

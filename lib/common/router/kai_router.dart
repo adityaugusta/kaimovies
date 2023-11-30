@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:kaimovies/core/home/screens/pages/home_page.dart';
 import 'package:kaimovies/features/detail/screens/blocs/movie_detail_cubit.dart';
+import 'package:kaimovies/features/home/screens/pages/home_page.dart';
 import 'package:kaimovies/features/movie/screens/pages/movie_detail_page.dart';
 import 'package:kaimovies/features/tv/screens/pages/tv_detail_page.dart';
 
