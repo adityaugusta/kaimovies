@@ -20,7 +20,7 @@ mixin _$TvOnTheAirState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<Tv> tvs) success,
+    required TResult Function(List<ShowDetail> tvs) success,
     required TResult Function() empty,
     required TResult Function(String message) failure,
   }) =>
@@ -29,7 +29,7 @@ mixin _$TvOnTheAirState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<Tv> tvs)? success,
+    TResult? Function(List<ShowDetail> tvs)? success,
     TResult? Function()? empty,
     TResult? Function(String message)? failure,
   }) =>
@@ -38,7 +38,7 @@ mixin _$TvOnTheAirState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<Tv> tvs)? success,
+    TResult Function(List<ShowDetail> tvs)? success,
     TResult Function()? empty,
     TResult Function(String message)? failure,
     required TResult orElse(),
@@ -135,7 +135,7 @@ class _$InitialTvOnTheAirStateImpl implements InitialTvOnTheAirState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<Tv> tvs) success,
+    required TResult Function(List<ShowDetail> tvs) success,
     required TResult Function() empty,
     required TResult Function(String message) failure,
   }) {
@@ -147,7 +147,7 @@ class _$InitialTvOnTheAirStateImpl implements InitialTvOnTheAirState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<Tv> tvs)? success,
+    TResult? Function(List<ShowDetail> tvs)? success,
     TResult? Function()? empty,
     TResult? Function(String message)? failure,
   }) {
@@ -159,7 +159,7 @@ class _$InitialTvOnTheAirStateImpl implements InitialTvOnTheAirState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<Tv> tvs)? success,
+    TResult Function(List<ShowDetail> tvs)? success,
     TResult Function()? empty,
     TResult Function(String message)? failure,
     required TResult orElse(),
@@ -258,7 +258,7 @@ class _$LoadingTvOnTheAirStateImpl implements LoadingTvOnTheAirState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<Tv> tvs) success,
+    required TResult Function(List<ShowDetail> tvs) success,
     required TResult Function() empty,
     required TResult Function(String message) failure,
   }) {
@@ -270,7 +270,7 @@ class _$LoadingTvOnTheAirStateImpl implements LoadingTvOnTheAirState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<Tv> tvs)? success,
+    TResult? Function(List<ShowDetail> tvs)? success,
     TResult? Function()? empty,
     TResult? Function(String message)? failure,
   }) {
@@ -282,7 +282,7 @@ class _$LoadingTvOnTheAirStateImpl implements LoadingTvOnTheAirState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<Tv> tvs)? success,
+    TResult Function(List<ShowDetail> tvs)? success,
     TResult Function()? empty,
     TResult Function(String message)? failure,
     required TResult orElse(),
@@ -345,7 +345,7 @@ abstract class _$$SuccessTvOnTheAirStateImplCopyWith<$Res> {
           $Res Function(_$SuccessTvOnTheAirStateImpl) then) =
       __$$SuccessTvOnTheAirStateImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({List<Tv> tvs});
+  $Res call({List<ShowDetail> tvs});
 }
 
 /// @nodoc
@@ -366,7 +366,7 @@ class __$$SuccessTvOnTheAirStateImplCopyWithImpl<$Res>
       null == tvs
           ? _value.tvs
           : tvs // ignore: cast_nullable_to_non_nullable
-              as List<Tv>,
+              as List<ShowDetail>,
     ));
   }
 }
@@ -377,7 +377,7 @@ class _$SuccessTvOnTheAirStateImpl implements SuccessTvOnTheAirState {
   _$SuccessTvOnTheAirStateImpl(this.tvs);
 
   @override
-  final List<Tv> tvs;
+  final List<ShowDetail> tvs;
 
   @override
   String toString() {
@@ -408,7 +408,7 @@ class _$SuccessTvOnTheAirStateImpl implements SuccessTvOnTheAirState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<Tv> tvs) success,
+    required TResult Function(List<ShowDetail> tvs) success,
     required TResult Function() empty,
     required TResult Function(String message) failure,
   }) {
@@ -420,7 +420,7 @@ class _$SuccessTvOnTheAirStateImpl implements SuccessTvOnTheAirState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<Tv> tvs)? success,
+    TResult? Function(List<ShowDetail> tvs)? success,
     TResult? Function()? empty,
     TResult? Function(String message)? failure,
   }) {
@@ -432,7 +432,7 @@ class _$SuccessTvOnTheAirStateImpl implements SuccessTvOnTheAirState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<Tv> tvs)? success,
+    TResult Function(List<ShowDetail> tvs)? success,
     TResult Function()? empty,
     TResult Function(String message)? failure,
     required TResult orElse(),
@@ -485,10 +485,10 @@ class _$SuccessTvOnTheAirStateImpl implements SuccessTvOnTheAirState {
 }
 
 abstract class SuccessTvOnTheAirState implements TvOnTheAirState {
-  factory SuccessTvOnTheAirState(final List<Tv> tvs) =
+  factory SuccessTvOnTheAirState(final List<ShowDetail> tvs) =
       _$SuccessTvOnTheAirStateImpl;
 
-  List<Tv> get tvs;
+  List<ShowDetail> get tvs;
   @JsonKey(ignore: true)
   _$$SuccessTvOnTheAirStateImplCopyWith<_$SuccessTvOnTheAirStateImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -535,7 +535,7 @@ class _$EmptyTvOnTheAirStateImpl implements EmptyTvOnTheAirState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<Tv> tvs) success,
+    required TResult Function(List<ShowDetail> tvs) success,
     required TResult Function() empty,
     required TResult Function(String message) failure,
   }) {
@@ -547,7 +547,7 @@ class _$EmptyTvOnTheAirStateImpl implements EmptyTvOnTheAirState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<Tv> tvs)? success,
+    TResult? Function(List<ShowDetail> tvs)? success,
     TResult? Function()? empty,
     TResult? Function(String message)? failure,
   }) {
@@ -559,7 +559,7 @@ class _$EmptyTvOnTheAirStateImpl implements EmptyTvOnTheAirState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<Tv> tvs)? success,
+    TResult Function(List<ShowDetail> tvs)? success,
     TResult Function()? empty,
     TResult Function(String message)? failure,
     required TResult orElse(),
@@ -684,7 +684,7 @@ class _$FailureTvOnTheAirStateImpl implements FailureTvOnTheAirState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<Tv> tvs) success,
+    required TResult Function(List<ShowDetail> tvs) success,
     required TResult Function() empty,
     required TResult Function(String message) failure,
   }) {
@@ -696,7 +696,7 @@ class _$FailureTvOnTheAirStateImpl implements FailureTvOnTheAirState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<Tv> tvs)? success,
+    TResult? Function(List<ShowDetail> tvs)? success,
     TResult? Function()? empty,
     TResult? Function(String message)? failure,
   }) {
@@ -708,7 +708,7 @@ class _$FailureTvOnTheAirStateImpl implements FailureTvOnTheAirState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<Tv> tvs)? success,
+    TResult Function(List<ShowDetail> tvs)? success,
     TResult Function()? empty,
     TResult Function(String message)? failure,
     required TResult orElse(),

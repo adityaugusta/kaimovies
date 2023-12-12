@@ -7,6 +7,7 @@ import 'package:kaimovies/features/movie/repositories/movie_repository.dart';
 import 'package:kaimovies/features/movie/repositories/network/movie_service.dart';
 import 'package:kaimovies/features/review/models/review.dart';
 import 'package:kaimovies/features/review/models/review_response.dart';
+import 'package:kaimovies/features/review/repositories/cache/hive/review_box.dart';
 import 'package:kaimovies/features/tv/models/tv.dart';
 import 'package:kaimovies/features/tv/models/tv_response.dart';
 import 'package:kaimovies/features/tv/repositories/network/tv_service.dart';
@@ -82,9 +83,11 @@ Future<void> injectServices() async {
   injector.registerFactory<CacheControlBox>(
       () => injector.get<MainHive>().cacheControlBox);
   injector.registerFactory<MovieBox>(() => injector.get<MainHive>().movieBox);
+  injector.registerFactory<ReviewBox>(() => injector.get<MainHive>().reviewBox);
 
   /// inject repositories
   injector.registerLazySingleton<MovieRepository>(() => MovieRepository(
+        injector.get(),
         injector.get(),
         injector.get(),
         cacheControlBox: injector.get(),

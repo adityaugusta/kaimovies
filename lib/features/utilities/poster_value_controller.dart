@@ -1,9 +1,9 @@
-import 'package:flutter/material.dart' show Image, ValueNotifier;
+import 'package:flutter/material.dart' show ValueNotifier;
 
-class PosterValueController extends ValueNotifier<Image?> {
+class PosterValueController extends ValueNotifier<String?> {
   PosterValueController(super.value);
 
-  void updateValue(Image? val) {
+  void updateValue(String? val) {
     value = val;
     notifyListeners();
   }

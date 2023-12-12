@@ -3,14 +3,15 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:kaimovies/features/tv/screens/blocs/tv_ota_cubit.dart';
 import 'package:kaimovies/features/tv/screens/pages/tv_detail_page.dart';
-import 'package:kaimovies/features/utilities/poster_value_controller.dart';
 import 'package:kaimovies/widgets/kai_card_swiper.dart';
-import 'package:kaimovies/widgets/kai_poster_card_shimmer.dart';
 
 class OnTheAirTvsView extends StatelessWidget {
-  const OnTheAirTvsView({super.key, required this.backgroundImage});
+  const OnTheAirTvsView({
+    super.key,
+    // required this.posterValueController,
+  });
 
-  final PosterValueController backgroundImage;
+  // final PosterValueController posterValueController;
 
   @override
   Widget build(BuildContext context) {
@@ -20,12 +21,12 @@ class OnTheAirTvsView extends StatelessWidget {
           return KaiCardSwiper(
             title: 'Tv On The Air',
             data: state.tvs,
-            backgroundImage: backgroundImage,
+            // posterValueController: posterValueController,
             onItemTap: (tv) => context.goNamed(TvDetailPage.name,
                 pathParameters: {'id': tv.id.toString()}),
           );
         }
-        return const KaiPosterCardShimmer();
+        return KaiCardSwiper.shimmer(context);
       },
     );
   }

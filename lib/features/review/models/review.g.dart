@@ -7,15 +7,21 @@ part of 'review.dart';
 // **************************************************************************
 
 _$ReviewImpl _$$ReviewImplFromJson(Map<String, dynamic> json) => _$ReviewImpl(
+      id: json['id'] as String,
       authorDetails:
           AuthorDetail.fromJson(json['author_details'] as Map<String, dynamic>),
       content: json['content'] as String,
+      createdAt: json['created_at'] as String? ?? '',
+      updatedAt: json['updated_at'] as String? ?? '',
     );
 
 Map<String, dynamic> _$$ReviewImplToJson(_$ReviewImpl instance) =>
     <String, dynamic>{
+      'id': instance.id,
       'author_details': instance.authorDetails.toJson(),
       'content': instance.content,
+      'created_at': instance.createdAt,
+      'updated_at': instance.updatedAt,
     };
 
 _$AuthorDetailImpl _$$AuthorDetailImplFromJson(Map<String, dynamic> json) =>

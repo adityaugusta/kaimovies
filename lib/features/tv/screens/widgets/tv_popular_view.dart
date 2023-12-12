@@ -21,7 +21,7 @@ class PopularTvsView extends StatelessWidget {
                 pathParameters: {'id': tv.id.toString()}),
           );
         }
-        return HorizontalListView.loading();
+        return HorizontalListView.shimmer();
       },
     );
   }

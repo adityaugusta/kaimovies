@@ -6,7 +6,9 @@ class TvOnTheAirState with _$TvOnTheAirState {
 
   factory TvOnTheAirState.loading() = LoadingTvOnTheAirState;
 
-  factory TvOnTheAirState.success(List<Tv> tvs) = SuccessTvOnTheAirState;
+  factory TvOnTheAirState.success(
+    List<ShowDetail> tvs,
+  ) = SuccessTvOnTheAirState;
 
   factory TvOnTheAirState.empty() = EmptyTvOnTheAirState;
 

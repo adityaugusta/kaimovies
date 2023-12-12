@@ -3,6 +3,7 @@ import 'dart:async' show Completer, Future;
 import 'package:flutter/material.dart' show WidgetsFlutterBinding;
 import 'package:hive_flutter/adapters.dart' show Hive;
 import 'package:kaimovies/features/movie/repositories/cache/hive/movie_box.dart';
+import 'package:kaimovies/features/review/repositories/cache/hive/review_box.dart';
 import 'package:kaimovies/repositories/cache/hive/cache_control_box.dart';
 import 'package:kaimovies/repositories/cache/hive/models/hive_map.dart';
 import 'package:kaimovies/repositories/cache/hive/utilities/cache_closeable.dart';
@@ -26,6 +27,7 @@ class MainHive extends CacheClosable {
 
   late final CacheControlBox cacheControlBox;
   late final MovieBox movieBox;
+  late final ReviewBox reviewBox;
 
   Future<void> _init() async {
     WidgetsFlutterBinding.ensureInitialized();
@@ -35,6 +37,7 @@ class MainHive extends CacheClosable {
 
     cacheControlBox = CacheControlBox(path: path);
     movieBox = MovieBox(path: path);
+    reviewBox = ReviewBox(path: path);
 
     return Future.value();
   }

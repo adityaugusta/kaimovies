@@ -20,7 +20,7 @@ mixin _$MoviePopularState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<Movie> movies) success,
+    required TResult Function(List<ShowDetail> movies) success,
     required TResult Function() empty,
     required TResult Function(String message) failure,
   }) =>
@@ -29,7 +29,7 @@ mixin _$MoviePopularState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<Movie> movies)? success,
+    TResult? Function(List<ShowDetail> movies)? success,
     TResult? Function()? empty,
     TResult? Function(String message)? failure,
   }) =>
@@ -38,7 +38,7 @@ mixin _$MoviePopularState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<Movie> movies)? success,
+    TResult Function(List<ShowDetail> movies)? success,
     TResult Function()? empty,
     TResult Function(String message)? failure,
     required TResult orElse(),
@@ -136,7 +136,7 @@ class _$InitialMoviePopularStateImpl implements InitialMoviePopularState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<Movie> movies) success,
+    required TResult Function(List<ShowDetail> movies) success,
     required TResult Function() empty,
     required TResult Function(String message) failure,
   }) {
@@ -148,7 +148,7 @@ class _$InitialMoviePopularStateImpl implements InitialMoviePopularState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<Movie> movies)? success,
+    TResult? Function(List<ShowDetail> movies)? success,
     TResult? Function()? empty,
     TResult? Function(String message)? failure,
   }) {
@@ -160,7 +160,7 @@ class _$InitialMoviePopularStateImpl implements InitialMoviePopularState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<Movie> movies)? success,
+    TResult Function(List<ShowDetail> movies)? success,
     TResult Function()? empty,
     TResult Function(String message)? failure,
     required TResult orElse(),
@@ -260,7 +260,7 @@ class _$LoadingMoviePopularStateImpl implements LoadingMoviePopularState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<Movie> movies) success,
+    required TResult Function(List<ShowDetail> movies) success,
     required TResult Function() empty,
     required TResult Function(String message) failure,
   }) {
@@ -272,7 +272,7 @@ class _$LoadingMoviePopularStateImpl implements LoadingMoviePopularState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<Movie> movies)? success,
+    TResult? Function(List<ShowDetail> movies)? success,
     TResult? Function()? empty,
     TResult? Function(String message)? failure,
   }) {
@@ -284,7 +284,7 @@ class _$LoadingMoviePopularStateImpl implements LoadingMoviePopularState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<Movie> movies)? success,
+    TResult Function(List<ShowDetail> movies)? success,
     TResult Function()? empty,
     TResult Function(String message)? failure,
     required TResult orElse(),
@@ -347,7 +347,7 @@ abstract class _$$SuccessMoviePopularStateImplCopyWith<$Res> {
           $Res Function(_$SuccessMoviePopularStateImpl) then) =
       __$$SuccessMoviePopularStateImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({List<Movie> movies});
+  $Res call({List<ShowDetail> movies});
 }
 
 /// @nodoc
@@ -369,7 +369,7 @@ class __$$SuccessMoviePopularStateImplCopyWithImpl<$Res>
       null == movies
           ? _value.movies
           : movies // ignore: cast_nullable_to_non_nullable
-              as List<Movie>,
+              as List<ShowDetail>,
     ));
   }
 }
@@ -380,7 +380,7 @@ class _$SuccessMoviePopularStateImpl implements SuccessMoviePopularState {
   _$SuccessMoviePopularStateImpl(this.movies);
 
   @override
-  final List<Movie> movies;
+  final List<ShowDetail> movies;
 
   @override
   String toString() {
@@ -411,7 +411,7 @@ class _$SuccessMoviePopularStateImpl implements SuccessMoviePopularState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<Movie> movies) success,
+    required TResult Function(List<ShowDetail> movies) success,
     required TResult Function() empty,
     required TResult Function(String message) failure,
   }) {
@@ -423,7 +423,7 @@ class _$SuccessMoviePopularStateImpl implements SuccessMoviePopularState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<Movie> movies)? success,
+    TResult? Function(List<ShowDetail> movies)? success,
     TResult? Function()? empty,
     TResult? Function(String message)? failure,
   }) {
@@ -435,7 +435,7 @@ class _$SuccessMoviePopularStateImpl implements SuccessMoviePopularState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<Movie> movies)? success,
+    TResult Function(List<ShowDetail> movies)? success,
     TResult Function()? empty,
     TResult Function(String message)? failure,
     required TResult orElse(),
@@ -488,10 +488,10 @@ class _$SuccessMoviePopularStateImpl implements SuccessMoviePopularState {
 }
 
 abstract class SuccessMoviePopularState implements MoviePopularState {
-  factory SuccessMoviePopularState(final List<Movie> movies) =
+  factory SuccessMoviePopularState(final List<ShowDetail> movies) =
       _$SuccessMoviePopularStateImpl;
 
-  List<Movie> get movies;
+  List<ShowDetail> get movies;
   @JsonKey(ignore: true)
   _$$SuccessMoviePopularStateImplCopyWith<_$SuccessMoviePopularStateImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -540,7 +540,7 @@ class _$EmptyMoviePopularStateImpl implements EmptyMoviePopularState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<Movie> movies) success,
+    required TResult Function(List<ShowDetail> movies) success,
     required TResult Function() empty,
     required TResult Function(String message) failure,
   }) {
@@ -552,7 +552,7 @@ class _$EmptyMoviePopularStateImpl implements EmptyMoviePopularState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<Movie> movies)? success,
+    TResult? Function(List<ShowDetail> movies)? success,
     TResult? Function()? empty,
     TResult? Function(String message)? failure,
   }) {
@@ -564,7 +564,7 @@ class _$EmptyMoviePopularStateImpl implements EmptyMoviePopularState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<Movie> movies)? success,
+    TResult Function(List<ShowDetail> movies)? success,
     TResult Function()? empty,
     TResult Function(String message)? failure,
     required TResult orElse(),
@@ -690,7 +690,7 @@ class _$FailureMoviePopularStateImpl implements FailureMoviePopularState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<Movie> movies) success,
+    required TResult Function(List<ShowDetail> movies) success,
     required TResult Function() empty,
     required TResult Function(String message) failure,
   }) {
@@ -702,7 +702,7 @@ class _$FailureMoviePopularStateImpl implements FailureMoviePopularState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<Movie> movies)? success,
+    TResult? Function(List<ShowDetail> movies)? success,
     TResult? Function()? empty,
     TResult? Function(String message)? failure,
   }) {
@@ -714,7 +714,7 @@ class _$FailureMoviePopularStateImpl implements FailureMoviePopularState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<Movie> movies)? success,
+    TResult Function(List<ShowDetail> movies)? success,
     TResult Function()? empty,
     TResult Function(String message)? failure,
     required TResult orElse(),

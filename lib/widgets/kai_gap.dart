@@ -7,6 +7,8 @@ class KaiGap extends StatelessWidget {
   static const KaiGap s5 = KaiGap(5);
   static const KaiGap s10 = KaiGap(10);
   static const KaiGap s15 = KaiGap(15);
+  static const KaiGap s20 = KaiGap(20);
+  static const KaiGap s25 = KaiGap(25);
   static const KaiGap s30 = KaiGap(30);
   static const KaiGap s40 = KaiGap(40);
 

@@ -1,6 +1,8 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:kaimovies/models/genre.dart';
 
 part 'movie.freezed.dart';
+
 part 'movie.g.dart';
 
 @freezed
@@ -16,6 +18,8 @@ class Movie with _$Movie {
     required String releaseDate,
     @Default(0) double popularity,
     @Default(0) double voteAverage,
+    @Default(0) int voteCount,
+    List<Genre>? genres,
   }) = _Movie;
 
   factory Movie.fromJson(Map<String, dynamic> json) => _$MovieFromJson(json);

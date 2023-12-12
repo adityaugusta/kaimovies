@@ -7,7 +7,7 @@ class MovieUpcomingState with _$MovieUpcomingState {
   factory MovieUpcomingState.loading() = LoadingMovieUpcomingState;
 
   factory MovieUpcomingState.success(
-    List<Movie> movies,
+    List<ShowDetail> movies,
   ) = SuccessMovieUpcomingState;
 
   factory MovieUpcomingState.empty() = EmptyMovieUpcomingState;

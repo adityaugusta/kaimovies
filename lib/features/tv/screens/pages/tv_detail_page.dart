@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter/services.dart' show Brightness, SystemUiOverlayStyle;
+import 'package:flutter_bloc/flutter_bloc.dart' show BlocBuilder, BlocProvider;
 import 'package:kaimovies/features/detail/screens/widgets/detail_backdrop_view.dart';
 import 'package:kaimovies/features/detail/screens/widgets/detail_view.dart';
 import 'package:kaimovies/features/tv/screens/blocs/tv_detail_cubit.dart';
-import 'package:kaimovies/repositories/network/utilities/api_utils.dart';
+import 'package:kaimovies/repositories/network/utilities/api_utils.dart'
+    show getImageUrl;
 import 'package:kaimovies/utilities/ui_utils.dart';
 import 'package:kaimovies/widgets/button_back.dart';
 
@@ -40,21 +41,15 @@ class _TvDetailPageState extends State<TvDetailPage> {
               builder: (context, state) {
                 if (state is SuccessTvDetailState) {
                   final tv = state.tv;
-                  final posterUrl = getImageUrl(tv.posterPath ?? '');
-                  final backdropUrl = getImageUrl(tv.backdropPath ?? '');
+                  final backdropUrl = getImageUrl(state.tv.backdropUrl);
                   return Container(
                     width: double.infinity,
                     height: double.infinity,
                     color: backgroundColor,
                     child: Stack(
                       children: [
-                        BackdropView(backdropUrl),
-                        DetailView(
-                          title: tv.name,
-                          overview: tv.overview,
-                          posterUrl: posterUrl,
-                          reviews: state.reviews,
-                        ),
+                        if (backdropUrl != null) BackdropView(backdropUrl),
+                        DetailView(tv),
                         Positioned(
                           left: 15.0,
                           top: padding.top + 15.0,

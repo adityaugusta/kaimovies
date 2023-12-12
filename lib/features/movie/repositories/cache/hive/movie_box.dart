@@ -15,6 +15,11 @@ class MovieBox extends HiveBox {
   //   return a.popularity.compareTo(b.popularity);
   // }
 
+  Future<void> insert(String name, Movie movie) async {
+    final box = await openBox(name: name);
+    return box.put(movie.id, HiveMap.convert(movie.toJson()));
+  }
+
   Future<void> insertAll(String name, List<Movie> movies) async {
     final box = await openBox(name: name);
     movies.sort(_movieSortAsc);
@@ -22,6 +27,12 @@ class MovieBox extends HiveBox {
       for (final movie in movies) movie.id: HiveMap.convert(movie.toJson())
     };
     return box.putAll(toMap);
+  }
+
+  Future<Movie?> get(String name, int movieId) async {
+    final box = await openBox(name: name);
+    final value = box.get(movieId);
+    return value != null ? Movie.fromJson(value.data) : Movie.empty;
   }
 
   Future<List<Movie>?> getAll(String name) async {

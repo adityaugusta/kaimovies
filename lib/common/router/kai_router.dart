@@ -31,14 +31,14 @@ class HomeRoute extends GoRouteData {
 
 @immutable
 class MovieDetailRoute extends GoRouteData {
-  const MovieDetailRoute({this.id = ''});
+  const MovieDetailRoute({required this.id});
 
-  final String id;
+  final int id;
 
   @override
   Widget build(BuildContext context, GoRouterState state) => BlocProvider(
       create: (context) => MovieDetailCubit.create(context)..fetch(id),
-      child: MovieDetailPage(movieId: id));
+      child: MovieDetailPage(movieId: id.toString()));
 }
 
 @immutable

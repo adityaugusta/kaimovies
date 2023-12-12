@@ -6,10 +6,7 @@ class MovieDetailState with _$MovieDetailState {
 
   factory MovieDetailState.loading() = LoadingMovieDetailState;
 
-  factory MovieDetailState.success(
-    Movie movie,
-    List<Review> reviews,
-  ) = SuccessMovieDetailState;
+  factory MovieDetailState.success(ShowDetail movie) = SuccessMovieDetailState;
 
   factory MovieDetailState.empty() = EmptyMovieDetailState;
 

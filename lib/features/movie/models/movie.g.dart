@@ -17,6 +17,10 @@ _$MovieImpl _$$MovieImplFromJson(Map<String, dynamic> json) => _$MovieImpl(
       releaseDate: json['release_date'] as String,
       popularity: (json['popularity'] as num?)?.toDouble() ?? 0,
       voteAverage: (json['vote_average'] as num?)?.toDouble() ?? 0,
+      voteCount: json['vote_count'] as int? ?? 0,
+      genres: (json['genres'] as List<dynamic>?)
+          ?.map((e) => Genre.fromJson(e as Map<String, dynamic>))
+          .toList(),
     );
 
 Map<String, dynamic> _$$MovieImplToJson(_$MovieImpl instance) {
@@ -39,5 +43,7 @@ Map<String, dynamic> _$$MovieImplToJson(_$MovieImpl instance) {
   val['release_date'] = instance.releaseDate;
   val['popularity'] = instance.popularity;
   val['vote_average'] = instance.voteAverage;
+  val['vote_count'] = instance.voteCount;
+  writeNotNull('genres', instance.genres?.map((e) => e.toJson()).toList());
   return val;
 }

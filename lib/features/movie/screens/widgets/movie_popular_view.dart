@@ -21,7 +21,7 @@ class PopularMoviesView extends StatelessWidget {
                 pathParameters: {'id': movie.id.toString()}),
           );
         }
-        return HorizontalListView.loading();
+        return HorizontalListView.shimmer();
       },
     );
   }

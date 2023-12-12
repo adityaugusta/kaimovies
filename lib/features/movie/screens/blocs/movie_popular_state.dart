@@ -7,7 +7,7 @@ class MoviePopularState with _$MoviePopularState {
   factory MoviePopularState.loading() = LoadingMoviePopularState;
 
   factory MoviePopularState.success(
-    List<Movie> movies,
+    List<ShowDetail> movies,
   ) = SuccessMoviePopularState;
 
   factory MoviePopularState.empty() = EmptyMoviePopularState;

@@ -7,7 +7,7 @@ class MovieNowPlayingState with _$MovieNowPlayingState {
   factory MovieNowPlayingState.loading() = LoadingMovieNowPlayingState;
 
   factory MovieNowPlayingState.success(
-    List<Movie> movies,
+    List<ShowDetail> movies,
   ) = SuccessMovieNowPlayingState;
 
   factory MovieNowPlayingState.empty() = EmptyMovieNowPlayingState;

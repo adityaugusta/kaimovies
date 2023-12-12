@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kaimovies/gen/assets.gen.dart';
 import 'package:kaimovies/utilities/ui_utils.dart';
 
 class ProfileTab extends StatefulWidget {
@@ -33,7 +34,7 @@ class _ProfileTabState extends State<ProfileTab>
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(64),
                   image: DecorationImage(
-                    image: Image.asset('assets/app_logo.png').image,
+                    image: KaiAssets.logo.appLogo.image().image,
                     fit: BoxFit.cover,
                   ),
                 ),

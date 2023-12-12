@@ -19,9 +19,9 @@ abstract class MovieService extends ChopperService {
   Future<Response<MovieResponse>> getUpcoming();
 
   @Get(path: '/{movie_id}')
-  Future<Response<Movie>> getMovieDetail(@Path('movie_id') String movieId);
+  Future<Response<Movie>> getMovieDetail(@Path('movie_id') int movieId);
 
   @Get(path: '/{movie_id}/reviews')
   Future<Response<ReviewResponse>> getMovieReviews(
-      @Path('movie_id') String movieId);
+      @Path('movie_id') int movieId);
 }

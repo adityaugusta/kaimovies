@@ -6,8 +6,11 @@ part 'review.g.dart';
 @freezed
 class Review with _$Review {
   const factory Review({
+    required String id,
     required AuthorDetail authorDetails,
     required String content,
+    @Default('') String createdAt,
+    @Default('') String updatedAt,
   }) = _Review;
 
   factory Review.fromJson(Map<String, dynamic> json) => _$ReviewFromJson(json);

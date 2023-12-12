@@ -46,11 +46,11 @@ extension $HomeRouteExtension on HomeRoute {
 
 extension $MovieDetailRouteExtension on MovieDetailRoute {
   static MovieDetailRoute _fromState(GoRouterState state) => MovieDetailRoute(
-        id: state.pathParameters['id']! ?? '',
+        id: int.parse(state.pathParameters['id']!),
       );
 
   String get location => GoRouteData.$location(
-        '/movie-detail/${Uri.encodeComponent(id)}',
+        '/movie-detail/${Uri.encodeComponent(id.toString())}',
       );
 
   void go(BuildContext context) => context.go(location);

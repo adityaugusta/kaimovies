@@ -1,17 +1,19 @@
 import 'package:flutter/material.dart';
 
 const colorBlack45 = Color(0x73000000);
-const backgroundColor = Color(0xFF12141A);
-const backgroundLightColor = Color(0xFF30313D);
+const backgroundColor = Color(0xFF16181E);
+const backgroundLightColor = Color(0xFF252933);
 
 const defaultBorderRadius = 20.0;
 
-const cardShadow = BoxShadow(
-  color: Colors.black12,
-  spreadRadius: 10,
-  blurRadius: 10,
-  offset: Offset(0, 3),
-);
+const cardShadow = [
+  BoxShadow(
+    color: Colors.black12,
+    spreadRadius: 10,
+    blurRadius: 10,
+    offset: Offset(0, 3),
+  )
+];
 
 const cardShadowSmall = [
   BoxShadow(

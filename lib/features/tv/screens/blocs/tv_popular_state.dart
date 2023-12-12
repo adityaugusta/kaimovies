@@ -6,7 +6,7 @@ class TvPopularState with _$TvPopularState {
 
   factory TvPopularState.loading() = LoadingTvPopularState;
 
-  factory TvPopularState.success(List<Tv> tvs) = SuccessTvPopularState;
+  factory TvPopularState.success(List<ShowDetail> tvs) = SuccessTvPopularState;
 
   factory TvPopularState.empty() = EmptyTvPopularState;
 

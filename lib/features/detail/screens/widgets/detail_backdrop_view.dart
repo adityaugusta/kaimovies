@@ -8,10 +8,10 @@ class BackdropView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return Stack(
       children: [
         SizedBox(
-          height: 380,
+          height: 300,
           child: Image.network(
             backdropUrl,
             errorBuilder: (_, __, ___) =>
@@ -20,14 +20,17 @@ class BackdropView extends StatelessWidget {
           ),
         ),
         Container(
+          height: 300,
           decoration: const BoxDecoration(
-            boxShadow: [
-              BoxShadow(
-                color: backgroundColor,
-                spreadRadius: 180,
-                blurRadius: 180,
-              ),
-            ],
+            gradient: LinearGradient(
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
+              colors: [
+                Colors.transparent,
+                Colors.transparent,
+                backgroundColor,
+              ],
+            ),
           ),
         ),
       ],

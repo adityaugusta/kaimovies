@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:kaimovies/features/tv/models/tv.dart';
 import 'package:kaimovies/features/tv/repositories/tv_repository.dart';
+import 'package:kaimovies/models/show_detail.dart';
 import 'package:kaimovies/utilities/injector.dart';
 
 part 'tv_popular_cubit.freezed.dart';
@@ -19,9 +19,19 @@ class TvPopularCubit extends Cubit<TvPopularState> {
   Future<void> fetch() async {
     try {
       emit(LoadingTvPopularState());
-      final res = await _tvRepository.fetchPopular();
-      if (res != null && res.isNotEmpty) {
-        emit(SuccessTvPopularState(res));
+      final response = await _tvRepository.fetchPopular();
+      if (response != null && response.isNotEmpty) {
+        emit(SuccessTvPopularState(response
+            .map((tv) => ShowDetail(
+                id: tv.id,
+                title: tv.name,
+                tagline: tv.tagline,
+                overview: tv.overview,
+                posterUrl: tv.posterPath,
+                releaseDate: '',
+                genres: /*tv.genres ?? */ [],
+                reviews: []))
+            .toList()));
       } else {
         emit(EmptyTvPopularState());
       }

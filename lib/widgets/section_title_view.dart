@@ -6,10 +6,12 @@ class SectionTitleView extends StatelessWidget {
     super.key,
     required this.title,
     required this.content,
+    this.titlePadding,
   });
 
   final String title;
   final Widget content;
+  final EdgeInsets? titlePadding;
 
   @override
   Widget build(BuildContext context) {
@@ -19,11 +21,15 @@ class SectionTitleView extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisSize: MainAxisSize.min,
         children: [
-          Text(
-            title,
-            style: const TextStyle(fontSize: 19.0, fontWeight: FontWeight.bold),
+          Padding(
+            padding: titlePadding ?? EdgeInsets.zero,
+            child: Text(
+              title,
+              style:
+                  const TextStyle(fontSize: 19.0, fontWeight: FontWeight.bold),
+            ),
           ),
-          KaiGap.s15,
+          KaiGap.s10,
           content,
         ],
       ),

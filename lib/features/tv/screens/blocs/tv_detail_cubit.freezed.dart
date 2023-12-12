@@ -20,7 +20,7 @@ mixin _$TvDetailState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(Tv tv, List<Review> reviews) success,
+    required TResult Function(ShowDetail tv) success,
     required TResult Function() empty,
     required TResult Function(String message) failure,
   }) =>
@@ -29,7 +29,7 @@ mixin _$TvDetailState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(Tv tv, List<Review> reviews)? success,
+    TResult? Function(ShowDetail tv)? success,
     TResult? Function()? empty,
     TResult? Function(String message)? failure,
   }) =>
@@ -38,7 +38,7 @@ mixin _$TvDetailState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(Tv tv, List<Review> reviews)? success,
+    TResult Function(ShowDetail tv)? success,
     TResult Function()? empty,
     TResult Function(String message)? failure,
     required TResult orElse(),
@@ -133,7 +133,7 @@ class _$InitialTvDetailStateImpl implements InitialTvDetailState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(Tv tv, List<Review> reviews) success,
+    required TResult Function(ShowDetail tv) success,
     required TResult Function() empty,
     required TResult Function(String message) failure,
   }) {
@@ -145,7 +145,7 @@ class _$InitialTvDetailStateImpl implements InitialTvDetailState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(Tv tv, List<Review> reviews)? success,
+    TResult? Function(ShowDetail tv)? success,
     TResult? Function()? empty,
     TResult? Function(String message)? failure,
   }) {
@@ -157,7 +157,7 @@ class _$InitialTvDetailStateImpl implements InitialTvDetailState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(Tv tv, List<Review> reviews)? success,
+    TResult Function(ShowDetail tv)? success,
     TResult Function()? empty,
     TResult Function(String message)? failure,
     required TResult orElse(),
@@ -254,7 +254,7 @@ class _$LoadingTvDetailStateImpl implements LoadingTvDetailState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(Tv tv, List<Review> reviews) success,
+    required TResult Function(ShowDetail tv) success,
     required TResult Function() empty,
     required TResult Function(String message) failure,
   }) {
@@ -266,7 +266,7 @@ class _$LoadingTvDetailStateImpl implements LoadingTvDetailState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(Tv tv, List<Review> reviews)? success,
+    TResult? Function(ShowDetail tv)? success,
     TResult? Function()? empty,
     TResult? Function(String message)? failure,
   }) {
@@ -278,7 +278,7 @@ class _$LoadingTvDetailStateImpl implements LoadingTvDetailState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(Tv tv, List<Review> reviews)? success,
+    TResult Function(ShowDetail tv)? success,
     TResult Function()? empty,
     TResult Function(String message)? failure,
     required TResult orElse(),
@@ -340,9 +340,7 @@ abstract class _$$SuccessTvDetailStateImplCopyWith<$Res> {
           $Res Function(_$SuccessTvDetailStateImpl) then) =
       __$$SuccessTvDetailStateImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({Tv tv, List<Review> reviews});
-
-  $TvCopyWith<$Res> get tv;
+  $Res call({ShowDetail tv});
 }
 
 /// @nodoc
@@ -357,42 +355,27 @@ class __$$SuccessTvDetailStateImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? tv = null,
-    Object? reviews = null,
   }) {
     return _then(_$SuccessTvDetailStateImpl(
       null == tv
           ? _value.tv
           : tv // ignore: cast_nullable_to_non_nullable
-              as Tv,
-      null == reviews
-          ? _value.reviews
-          : reviews // ignore: cast_nullable_to_non_nullable
-              as List<Review>,
+              as ShowDetail,
     ));
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $TvCopyWith<$Res> get tv {
-    return $TvCopyWith<$Res>(_value.tv, (value) {
-      return _then(_value.copyWith(tv: value));
-    });
   }
 }
 
 /// @nodoc
 
 class _$SuccessTvDetailStateImpl implements SuccessTvDetailState {
-  _$SuccessTvDetailStateImpl(this.tv, this.reviews);
+  _$SuccessTvDetailStateImpl(this.tv);
 
   @override
-  final Tv tv;
-  @override
-  final List<Review> reviews;
+  final ShowDetail tv;
 
   @override
   String toString() {
-    return 'TvDetailState.success(tv: $tv, reviews: $reviews)';
+    return 'TvDetailState.success(tv: $tv)';
   }
 
   @override
@@ -400,13 +383,11 @@ class _$SuccessTvDetailStateImpl implements SuccessTvDetailState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SuccessTvDetailStateImpl &&
-            (identical(other.tv, tv) || other.tv == tv) &&
-            const DeepCollectionEquality().equals(other.reviews, reviews));
+            (identical(other.tv, tv) || other.tv == tv));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, tv, const DeepCollectionEquality().hash(reviews));
+  int get hashCode => Object.hash(runtimeType, tv);
 
   @JsonKey(ignore: true)
   @override
@@ -421,11 +402,11 @@ class _$SuccessTvDetailStateImpl implements SuccessTvDetailState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(Tv tv, List<Review> reviews) success,
+    required TResult Function(ShowDetail tv) success,
     required TResult Function() empty,
     required TResult Function(String message) failure,
   }) {
-    return success(tv, reviews);
+    return success(tv);
   }
 
   @override
@@ -433,11 +414,11 @@ class _$SuccessTvDetailStateImpl implements SuccessTvDetailState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(Tv tv, List<Review> reviews)? success,
+    TResult? Function(ShowDetail tv)? success,
     TResult? Function()? empty,
     TResult? Function(String message)? failure,
   }) {
-    return success?.call(tv, reviews);
+    return success?.call(tv);
   }
 
   @override
@@ -445,13 +426,13 @@ class _$SuccessTvDetailStateImpl implements SuccessTvDetailState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(Tv tv, List<Review> reviews)? success,
+    TResult Function(ShowDetail tv)? success,
     TResult Function()? empty,
     TResult Function(String message)? failure,
     required TResult orElse(),
   }) {
     if (success != null) {
-      return success(tv, reviews);
+      return success(tv);
     }
     return orElse();
   }
@@ -498,11 +479,10 @@ class _$SuccessTvDetailStateImpl implements SuccessTvDetailState {
 }
 
 abstract class SuccessTvDetailState implements TvDetailState {
-  factory SuccessTvDetailState(final Tv tv, final List<Review> reviews) =
+  factory SuccessTvDetailState(final ShowDetail tv) =
       _$SuccessTvDetailStateImpl;
 
-  Tv get tv;
-  List<Review> get reviews;
+  ShowDetail get tv;
   @JsonKey(ignore: true)
   _$$SuccessTvDetailStateImplCopyWith<_$SuccessTvDetailStateImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -548,7 +528,7 @@ class _$EmptyTvDetailStateImpl implements EmptyTvDetailState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(Tv tv, List<Review> reviews) success,
+    required TResult Function(ShowDetail tv) success,
     required TResult Function() empty,
     required TResult Function(String message) failure,
   }) {
@@ -560,7 +540,7 @@ class _$EmptyTvDetailStateImpl implements EmptyTvDetailState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(Tv tv, List<Review> reviews)? success,
+    TResult? Function(ShowDetail tv)? success,
     TResult? Function()? empty,
     TResult? Function(String message)? failure,
   }) {
@@ -572,7 +552,7 @@ class _$EmptyTvDetailStateImpl implements EmptyTvDetailState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(Tv tv, List<Review> reviews)? success,
+    TResult Function(ShowDetail tv)? success,
     TResult Function()? empty,
     TResult Function(String message)? failure,
     required TResult orElse(),
@@ -696,7 +676,7 @@ class _$FailureTvDetailStateImpl implements FailureTvDetailState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(Tv tv, List<Review> reviews) success,
+    required TResult Function(ShowDetail tv) success,
     required TResult Function() empty,
     required TResult Function(String message) failure,
   }) {
@@ -708,7 +688,7 @@ class _$FailureTvDetailStateImpl implements FailureTvDetailState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(Tv tv, List<Review> reviews)? success,
+    TResult? Function(ShowDetail tv)? success,
     TResult? Function()? empty,
     TResult? Function(String message)? failure,
   }) {
@@ -720,7 +700,7 @@ class _$FailureTvDetailStateImpl implements FailureTvDetailState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(Tv tv, List<Review> reviews)? success,
+    TResult Function(ShowDetail tv)? success,
     TResult Function()? empty,
     TResult Function(String message)? failure,
     required TResult orElse(),

@@ -64,7 +64,7 @@ class _HomePageState extends State<HomePage> {
               child: BackdropFilter(
                 filter: ImageFilter.blur(sigmaX: 8, sigmaY: 8),
                 child: Theme(
-                  data: ThemeData(highlightColor: Colors.transparent),
+                  data: ThemeData(highlightColor: Colors.transparent, useMaterial3: true),
                   child: BottomNavigationBar(
                     backgroundColor: backgroundLightColor.withOpacity(0.5),
                     selectedItemColor: Colors.white,

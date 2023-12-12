@@ -1,21 +1,50 @@
 import 'package:flutter/material.dart';
-import 'package:kaimovies/features/movie/models/movie.dart';
-import 'package:kaimovies/features/tv/models/tv.dart';
-import 'package:kaimovies/repositories/services/utilities/api_utils.dart';
+import 'package:kaimovies/features/review/models/review.dart';
+import 'package:kaimovies/models/show_detail.dart';
+import 'package:kaimovies/repositories/network/utilities/api_utils.dart'
+    show getImageUrl;
 import 'package:kaimovies/utilities/ui_utils.dart';
-import 'package:kaimovies/widgets/kai_poster_card.dart';
+import 'package:kaimovies/widgets/poster_card.dart';
 
-class HorizontalListView<T> extends StatelessWidget {
+class HorizontalListView extends StatelessWidget {
   const HorizontalListView({
     super.key,
-    this.title,
     required this.data,
+    this.title,
     this.onItemTap,
   });
 
   final String? title;
-  final List<T> data;
-  final Function(T)? onItemTap;
+  final List<ShowDetail> data;
+  final Function(ShowDetail)? onItemTap;
+
+  static Widget shimmer() => Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Container(
+            width: 125,
+            height: 25,
+            margin: const EdgeInsets.only(left: 15),
+            decoration: const BoxDecoration(
+              borderRadius: BorderRadius.all(Radius.circular(10)),
+              color: backgroundLightColor,
+              boxShadow: cardShadowSmall,
+            ),
+          ),
+          SizedBox(
+            height: 220,
+            width: double.infinity,
+            child: ListView.separated(
+              physics: const NeverScrollableScrollPhysics(),
+              padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+              itemCount: 5,
+              scrollDirection: Axis.horizontal,
+              itemBuilder: (_, __) => PosterCard.shimmer(),
+              separatorBuilder: (_, __) => const SizedBox(width: 10),
+            ),
+          ),
+        ],
+      );
 
   @override
   Widget build(BuildContext context) =>
@@ -42,19 +71,9 @@ class HorizontalListView<T> extends StatelessWidget {
             scrollDirection: Axis.horizontal,
             itemBuilder: (_, index) {
               final item = data[index];
-              late String title;
-              late String posterPath;
-              if (item is Movie) {
-                title = item.title;
-                posterPath = item.posterPath ?? '';
-              }
-              if (item is Tv) {
-                title = item.name;
-                posterPath = item.posterPath ?? '';
-              }
               return PosterCard(
-                title: title,
-                imageUrl: getImageUrl(posterPath),
+                title: item.title,
+                posterUrl: getImageUrl(item.posterUrl),
                 onTap: () => onItemTap?.call(data[index]),
               );
             },
@@ -62,32 +81,4 @@ class HorizontalListView<T> extends StatelessWidget {
           ),
         ),
       ]);
-
-  static Widget loading() => Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Container(
-            width: 125,
-            height: 25,
-            margin: const EdgeInsets.only(left: 15),
-            decoration: const BoxDecoration(
-              borderRadius: BorderRadius.all(Radius.circular(10)),
-              color: Colors.white10,
-              boxShadow: cardShadowSmall,
-            ),
-          ),
-          SizedBox(
-            height: 220,
-            width: double.infinity,
-            child: ListView.separated(
-              physics: const NeverScrollableScrollPhysics(),
-              padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
-              itemCount: 5,
-              scrollDirection: Axis.horizontal,
-              itemBuilder: (_, __) => PosterCard.loading(),
-              separatorBuilder: (_, __) => const SizedBox(width: 10),
-            ),
-          ),
-        ],
-      );
 }

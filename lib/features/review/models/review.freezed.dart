@@ -20,8 +20,11 @@ Review _$ReviewFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Review {
+  String get id => throw _privateConstructorUsedError;
   AuthorDetail get authorDetails => throw _privateConstructorUsedError;
   String get content => throw _privateConstructorUsedError;
+  String get createdAt => throw _privateConstructorUsedError;
+  String get updatedAt => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -33,7 +36,12 @@ abstract class $ReviewCopyWith<$Res> {
   factory $ReviewCopyWith(Review value, $Res Function(Review) then) =
       _$ReviewCopyWithImpl<$Res, Review>;
   @useResult
-  $Res call({AuthorDetail authorDetails, String content});
+  $Res call(
+      {String id,
+      AuthorDetail authorDetails,
+      String content,
+      String createdAt,
+      String updatedAt});
 
   $AuthorDetailCopyWith<$Res> get authorDetails;
 }
@@ -51,10 +59,17 @@ class _$ReviewCopyWithImpl<$Res, $Val extends Review>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = null,
     Object? authorDetails = null,
     Object? content = null,
+    Object? createdAt = null,
+    Object? updatedAt = null,
   }) {
     return _then(_value.copyWith(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
       authorDetails: null == authorDetails
           ? _value.authorDetails
           : authorDetails // ignore: cast_nullable_to_non_nullable
@@ -62,6 +77,14 @@ class _$ReviewCopyWithImpl<$Res, $Val extends Review>
       content: null == content
           ? _value.content
           : content // ignore: cast_nullable_to_non_nullable
+              as String,
+      createdAt: null == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as String,
+      updatedAt: null == updatedAt
+          ? _value.updatedAt
+          : updatedAt // ignore: cast_nullable_to_non_nullable
               as String,
     ) as $Val);
   }
@@ -82,7 +105,12 @@ abstract class _$$ReviewImplCopyWith<$Res> implements $ReviewCopyWith<$Res> {
       __$$ReviewImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({AuthorDetail authorDetails, String content});
+  $Res call(
+      {String id,
+      AuthorDetail authorDetails,
+      String content,
+      String createdAt,
+      String updatedAt});
 
   @override
   $AuthorDetailCopyWith<$Res> get authorDetails;
@@ -99,10 +127,17 @@ class __$$ReviewImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = null,
     Object? authorDetails = null,
     Object? content = null,
+    Object? createdAt = null,
+    Object? updatedAt = null,
   }) {
     return _then(_$ReviewImpl(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
       authorDetails: null == authorDetails
           ? _value.authorDetails
           : authorDetails // ignore: cast_nullable_to_non_nullable
@@ -111,6 +146,14 @@ class __$$ReviewImplCopyWithImpl<$Res>
           ? _value.content
           : content // ignore: cast_nullable_to_non_nullable
               as String,
+      createdAt: null == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as String,
+      updatedAt: null == updatedAt
+          ? _value.updatedAt
+          : updatedAt // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -118,19 +161,32 @@ class __$$ReviewImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$ReviewImpl implements _Review {
-  const _$ReviewImpl({required this.authorDetails, required this.content});
+  const _$ReviewImpl(
+      {required this.id,
+      required this.authorDetails,
+      required this.content,
+      this.createdAt = '',
+      this.updatedAt = ''});
 
   factory _$ReviewImpl.fromJson(Map<String, dynamic> json) =>
       _$$ReviewImplFromJson(json);
 
   @override
+  final String id;
+  @override
   final AuthorDetail authorDetails;
   @override
   final String content;
+  @override
+  @JsonKey()
+  final String createdAt;
+  @override
+  @JsonKey()
+  final String updatedAt;
 
   @override
   String toString() {
-    return 'Review(authorDetails: $authorDetails, content: $content)';
+    return 'Review(id: $id, authorDetails: $authorDetails, content: $content, createdAt: $createdAt, updatedAt: $updatedAt)';
   }
 
   @override
@@ -138,14 +194,20 @@ class _$ReviewImpl implements _Review {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ReviewImpl &&
+            (identical(other.id, id) || other.id == id) &&
             (identical(other.authorDetails, authorDetails) ||
                 other.authorDetails == authorDetails) &&
-            (identical(other.content, content) || other.content == content));
+            (identical(other.content, content) || other.content == content) &&
+            (identical(other.createdAt, createdAt) ||
+                other.createdAt == createdAt) &&
+            (identical(other.updatedAt, updatedAt) ||
+                other.updatedAt == updatedAt));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, authorDetails, content);
+  int get hashCode => Object.hash(
+      runtimeType, id, authorDetails, content, createdAt, updatedAt);
 
   @JsonKey(ignore: true)
   @override
@@ -163,15 +225,24 @@ class _$ReviewImpl implements _Review {
 
 abstract class _Review implements Review {
   const factory _Review(
-      {required final AuthorDetail authorDetails,
-      required final String content}) = _$ReviewImpl;
+      {required final String id,
+      required final AuthorDetail authorDetails,
+      required final String content,
+      final String createdAt,
+      final String updatedAt}) = _$ReviewImpl;
 
   factory _Review.fromJson(Map<String, dynamic> json) = _$ReviewImpl.fromJson;
 
   @override
+  String get id;
+  @override
   AuthorDetail get authorDetails;
   @override
   String get content;
+  @override
+  String get createdAt;
+  @override
+  String get updatedAt;
   @override
   @JsonKey(ignore: true)
   _$$ReviewImplCopyWith<_$ReviewImpl> get copyWith =>

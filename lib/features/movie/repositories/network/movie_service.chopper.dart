@@ -50,7 +50,7 @@ class _$MovieService extends MovieService {
   }
 
   @override
-  Future<Response<Movie>> getMovieDetail(String movieId) {
+  Future<Response<Movie>> getMovieDetail(int movieId) {
     final Uri $url = Uri.parse('/movie/${movieId}');
     final Request $request = Request(
       'GET',
@@ -61,7 +61,7 @@ class _$MovieService extends MovieService {
   }
 
   @override
-  Future<Response<ReviewResponse>> getMovieReviews(String movieId) {
+  Future<Response<ReviewResponse>> getMovieReviews(int movieId) {
     final Uri $url = Uri.parse('/movie/${movieId}/reviews');
     final Request $request = Request(
       'GET',
